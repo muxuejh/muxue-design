@@ -23,11 +23,13 @@ const appStore = useAppStore()
     width: $sidebar-menu-width;
     height: 100%;
     background: $sidebar-menu-bg;
+    border-right: 1px solid #ebeef5;
   }
 
   .menu-content {
     width: $sidebar-menu-content-width;
     background: $sub-content-bg;
+    border-right: 1px solid #ebeef5;
     transition: all 0.3s;
   }
 }

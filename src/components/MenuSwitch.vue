@@ -1,6 +1,6 @@
 <template>
   <div class="switch" :style="positionStyle" @click="toggleCollapse">
-    <el-icon color="#ccc">
+    <el-icon color="#666">
       <ArrowLeftBold v-if="target === 'sidebar'" />
       <ArrowRightBold v-else />
     </el-icon>
@@ -20,13 +20,15 @@ const props = defineProps({
 })
 
 const positionStyle = computed(() => {
-  let style = { right: '', borderRadius: '', left: '' }
+  let style = { right: '', borderRadius: '', left: '', borderLeft: '', borderRight: '' }
   if (props.target === 'sidebar') {
     style.right = '-18px'
     style.borderRadius = '0 10px 10px 0'
+    style.borderLeft = 'none'
   } else if (props.target === 'configPanel') {
     style.left = '-18px'
     style.borderRadius = '10px 0 0 10px'
+    style.borderRight = 'none'
   }
 
   return style
@@ -56,5 +58,6 @@ const toggleCollapse = () => {
   background: $sub-content-bg;
   // border-radius: 0 10px 10px 0;
   cursor: pointer;
+  border: 1px solid #ebeef5;
 }
 </style>

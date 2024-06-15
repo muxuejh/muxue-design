@@ -18,6 +18,7 @@ const appStore = useAppStore()
   height: 100%;
   // padding: 15px;
   background: $sub-content-bg;
+  border-left: 1px solid #ebeef5;
   transition: all 0.3s;
 }
 </style>

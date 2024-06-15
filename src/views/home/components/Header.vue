@@ -15,5 +15,6 @@
   background: $heder-bg;
   // background: linear-gradient(90deg, $header-bg-left 0%, $header-bg-right 100%);
   // box-shadow: 1px 0 10px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #eef2f8;
 }
 </style>
