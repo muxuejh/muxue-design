@@ -13,7 +13,7 @@
 import { onMounted, provide } from 'vue'
 import { fabric } from 'fabric'
 import Zoom from '@/components/Zoom.vue'
-import Editor, { RulerPlugin, WorkspacePlugin, AlignGuidLinePlugin } from '@/core'
+import Editor, { RulerPlugin, WorkspacePlugin, AlignGuidLinePlugin, ControlsPlugin } from '@/core'
 
 // 创建编辑器
 const canvasEditor = new Editor()
@@ -29,6 +29,7 @@ onMounted(() => {
   canvasEditor.use(RulerPlugin)
   canvasEditor.use(WorkspacePlugin)
   canvasEditor.use(AlignGuidLinePlugin)
+  canvasEditor.use(ControlsPlugin)
 
   canvasEditor.rulerEnable()
 
