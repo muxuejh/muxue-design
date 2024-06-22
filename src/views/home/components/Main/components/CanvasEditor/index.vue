@@ -13,7 +13,7 @@
 import { onMounted, provide } from 'vue'
 import { fabric } from 'fabric'
 import Zoom from '@/components/Zoom.vue'
-import Editor, { RulerPlugin, WorkspacePlugin } from '@/core'
+import Editor, { RulerPlugin, WorkspacePlugin, AlignGuidLinePlugin } from '@/core'
 
 // 创建编辑器
 const canvasEditor = new Editor()
@@ -28,6 +28,8 @@ onMounted(() => {
   canvasEditor.init(canvas)
   canvasEditor.use(RulerPlugin)
   canvasEditor.use(WorkspacePlugin)
+  canvasEditor.use(AlignGuidLinePlugin)
+
   canvasEditor.rulerEnable()
 
   // 创建一个长方形
