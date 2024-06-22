@@ -28,6 +28,18 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
           additionalData: '@import "./src/styles/variable.scss";'
         }
       }
+    },
+    server: {
+      host: '0.0.0.0',
+      port: 5000,
+      open: true
+      /* proxy: {
+        '/api': {
+          target: loadEnv(mode, process.cwd()).VITE_APP_BASE_API,
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/api/, '')
+        }
+      } */
     }
   }
 })
