@@ -52,6 +52,7 @@ provide('canvasEditor', canvasEditor)
 .canvas-editor-container {
   flex: 1;
   height: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
