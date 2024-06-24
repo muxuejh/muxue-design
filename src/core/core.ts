@@ -20,7 +20,6 @@ class Editor {
 
   init(canvas: fabric.Canvas) {
     this.canvas = canvas
-    console.log('this.canvas', this.canvas)
   }
 
   // 引入组件

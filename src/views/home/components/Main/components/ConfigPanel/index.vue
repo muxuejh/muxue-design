@@ -17,8 +17,8 @@ const appStore = useAppStore()
   width: $config-panel-width;
   height: 100%;
   // padding: 15px;
-  background: $sub-content-bg;
-  border-left: 1px solid #ebeef5;
+  background: $main-bg-color;
+  border-left: 1px solid $border-color;
   transition: all 0.3s;
 }
 </style>

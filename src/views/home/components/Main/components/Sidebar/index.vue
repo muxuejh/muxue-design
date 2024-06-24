@@ -53,8 +53,8 @@ const changeMenu = (index: number) => {
     position: relative;
     width: $sidebar-menu-width;
     height: 100%;
-    background: $sidebar-menu-bg;
-    border-right: 1px solid #ebeef5;
+    background: $main-bg-color;
+    border-right: 1px solid $border-color;
     .bar {
       position: absolute;
       right: 0;
@@ -84,8 +84,8 @@ const changeMenu = (index: number) => {
 
   .menu-content {
     width: $sidebar-menu-content-width;
-    background: $sub-content-bg;
-    border-right: 1px solid #ebeef5;
+    background: $main-bg-color;
+    border-right: 1px solid $border-color;
     transition: all 0.3s;
   }
 }

@@ -2,6 +2,7 @@
   <div class="canvas-editor-container">
     <div id="workspace">
       <div class="canvas-wrap">
+        <div class="inside-shadow"></div>
         <canvas id="canvasId"></canvas>
         <Zoom />
       </div>
@@ -68,6 +69,14 @@ provide('canvasEditor', canvasEditor)
     height: 100%;
     .canvas-wrap {
       position: relative;
+      .inside-shadow {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-shadow: inset 0 0 9px 2px #0000001f;
+        z-index: 2;
+        pointer-events: none;
+      }
     }
   }
 }

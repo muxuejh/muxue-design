@@ -60,9 +60,9 @@ const toggleCollapse = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $sub-content-bg;
+  background: $main-bg-color;
   // border-radius: 0 10px 10px 0;
   cursor: pointer;
-  border: 1px solid #ebeef5;
+  border: 1px solid $border-color;
 }
 </style>

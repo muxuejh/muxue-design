@@ -3,8 +3,6 @@ import { fabric } from 'fabric'
 import CanvasRuler, { RulerOptions } from './ruler'
 
 function initRuler(canvas: Canvas, options?: RulerOptions) {
-  console.log('canvas', canvas)
-  console.log('options', options)
   const ruler = new CanvasRuler({
     canvas,
     ...options
