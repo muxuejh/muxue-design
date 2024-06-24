@@ -1,7 +1,12 @@
 <template>
   <div class="switch" :style="positionStyle" @click="toggleCollapse">
     <el-icon color="#666">
-      <ArrowLeftBold v-if="target === 'sidebar'" />
+      <ArrowLeftBold
+        v-if="
+          (target === 'sidebar' && !appStore.isMenuContentCollapse) ||
+          (target === 'configPanel' && appStore.isConfigPanelCollapse)
+        "
+      />
       <ArrowRightBold v-else />
     </el-icon>
   </div>
@@ -39,7 +44,7 @@ const toggleCollapse = () => {
   if (props.target === 'sidebar') {
     appStore.toggleMenuContentCollapse()
   } else if (props.target === 'configPanel') {
-    appStore.toggleConfigPanelCillspse()
+    appStore.toggleConfigPanelCollapse()
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="config-panel-container" :class="appStore.isConfigPanelCillspse ? 'hidden' : ''">
+  <div class="config-panel-container" :class="appStore.isConfigPanelCollapse ? 'hidden' : ''">
     <MenuSwitch target="configPanel" />
   </div>
 </template>

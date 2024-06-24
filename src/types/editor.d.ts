@@ -16,11 +16,11 @@ declare interface IPluginClass extends IPluginTempl {
 
 // 插件实例
 declare interface IPluginTempl {
-  pluginName: string
-  events: string[]
-  apis: string[]
-  canvas: fabric.Canvas
-  hotkeyEvent: (name: string, e: Event) => viode
-  [propName: IEditorHooksType]: () => void
-  [propName: string]: any
+  pluginName?: string
+  events?: string[]
+  apis?: string[]
+  canvas?: fabric.Canvas
+  hotkeyEvent?: (name: string, e: Event) => viode
+  [propName?: IEditorHooksType]: () => void
+  [propName?: string]: any
 }

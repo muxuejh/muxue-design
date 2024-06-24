@@ -3,15 +3,15 @@ import { defineStore } from 'pinia'
 const useAppStore = defineStore('app', {
   state: () => ({
     isMenuContentCollapse: false,
-    isConfigPanelCillspse: false
+    isConfigPanelCollapse: false
   }),
 
   actions: {
     toggleMenuContentCollapse() {
       this.isMenuContentCollapse = !this.isMenuContentCollapse
     },
-    toggleConfigPanelCillspse() {
-      this.isConfigPanelCillspse = !this.isConfigPanelCillspse
+    toggleConfigPanelCollapse() {
+      this.isConfigPanelCollapse = !this.isConfigPanelCollapse
     }
   }
 })
