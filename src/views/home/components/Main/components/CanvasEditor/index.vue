@@ -13,6 +13,7 @@
 <script setup lang="ts">
 import { onMounted, provide } from 'vue'
 import { fabric } from 'fabric'
+import useEditorStore from '@/stores/modules/editor'
 import Zoom from '@/components/Zoom.vue'
 import Editor, { RulerPlugin, WorkspacePlugin, AlignGuidLinePlugin, ControlsPlugin } from '@/core'
 
@@ -33,20 +34,11 @@ onMounted(() => {
   canvasEditor.use(ControlsPlugin)
 
   canvasEditor.rulerEnable()
-
-  // 创建一个长方形
-  const rect = new fabric.Rect({
-    top: 100, // 距离容器顶部 100px
-    left: 100, // 距离容器左侧 100px
-    width: 100, // 矩形宽度 30px
-    height: 100, // 矩形高度 30px
-    fill: 'red' // 填充 红色
-  })
-
-  canvas.add(rect) // 将矩形添加到 canvas 画布里
 })
 
 provide('canvasEditor', canvasEditor)
+const editorStore = useEditorStore()
+editorStore.setCanvasEditor(canvasEditor)
 </script>
 
 <style scoped lang="scss">

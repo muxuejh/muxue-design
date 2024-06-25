@@ -17,7 +17,11 @@
         <span class="text">{{ menu.name }}</span>
       </div>
     </div>
-    <div class="menu-content" :class="appStore.isMenuContentCollapse ? 'hidden' : ''"></div>
+
+    <div class="menu-content" :class="appStore.isMenuContentCollapse ? 'hidden' : ''">
+      <component v-show="!appStore.isMenuContentCollapse" :is="copms[activeIndex]" />
+    </div>
+
     <MenuSwitch target="sidebar" />
   </div>
 </template>
@@ -27,8 +31,14 @@ import { ref } from 'vue'
 import useAppStore from '@/stores/modules/app'
 import MenuSwitch from '@/components/MenuSwitch.vue'
 import SvgIcon from '@/components/SvgIcon.vue'
+import Template from './components/Template.vue'
+import Material from './components/Material.vue'
+import Element from './components/Element.vue'
+import Layer from './components/Layer.vue'
 
 const appStore = useAppStore()
+
+const copms = [Template, Material, Element, Layer]
 
 const activeIndex = ref(0)
 const menus = ref([
@@ -84,6 +94,7 @@ const changeMenu = (index: number) => {
 
   .menu-content {
     width: $sidebar-menu-content-width;
+    padding: 15px;
     background: $main-bg-color;
     border-right: 1px solid $border-color;
     transition: all 0.3s;
