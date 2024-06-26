@@ -44,7 +44,7 @@
           color: var(--el-color-primary);
         }
         &:hover {
-          background: #f1f1f1;
+          background: $sub-bg-color;
         }
         .icon {
           margin-bottom: 5px;
@@ -96,7 +96,7 @@
     position: relative;
     width: $config-panel-width;
     height: 100%;
-    // padding: 15px;
+    padding: 15px;
     background: $main-bg-color;
     border-left: 1px solid $border-color;
     transition: all 0.3s;

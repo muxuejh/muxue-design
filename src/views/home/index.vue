@@ -43,6 +43,7 @@
 
       <!-- 属性区域 -->
       <div class="config-panel-container" :class="appStore.isConfigPanelCollapse ? 'hidden' : ''">
+        <AlignCenter />
         <MenuSwitch target="configPanel" />
       </div>
     </div>
@@ -65,7 +66,15 @@ import Layer from '@/components/sidebar/Layer.vue'
 
 import Zoom from '@/components/Zoom.vue'
 
-import Editor, { RulerPlugin, WorkspacePlugin, AlignGuidLinePlugin, ControlsPlugin } from '@/core'
+import AlignCenter from '@/components/configPanel/AlignCenter.vue'
+
+import Editor, {
+  RulerPlugin,
+  WorkspacePlugin,
+  AlignGuidLinePlugin,
+  ControlsPlugin,
+  CenterAlignPlugin
+} from '@/core'
 
 const appStore = useAppStore()
 
@@ -84,6 +93,7 @@ onMounted(() => {
   canvasEditor.use(WorkspacePlugin)
   canvasEditor.use(AlignGuidLinePlugin)
   canvasEditor.use(ControlsPlugin)
+  canvasEditor.use(CenterAlignPlugin)
 
   canvasEditor.rulerEnable()
 })

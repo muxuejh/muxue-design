@@ -117,11 +117,10 @@ const addRect = (option?: fabric.IRectOptions) => {
     name: '矩形'
   })
   canvasEditor.canvas.add(rect)
-  if (!option) {
-    // rect.center()
-    canvasEditor.canvas.centerObject(rect)
-  }
   canvasEditor.canvas.setActiveObject(rect)
+  if (!option) {
+    canvasEditor.position('center')
+  }
 }
 
 const addCircle = (option?: fabric.ICircleOptions) => {
@@ -134,10 +133,10 @@ const addCircle = (option?: fabric.ICircleOptions) => {
     name: '圆形'
   })
   canvasEditor.canvas.add(circle)
-  if (!option) {
-    circle.center()
-  }
   canvasEditor.canvas.setActiveObject(circle)
+  if (!option) {
+    canvasEditor.position('center')
+  }
 }
 
 const addTriangle = (option?: fabric.ITriangleOptions) => {
@@ -151,10 +150,10 @@ const addTriangle = (option?: fabric.ITriangleOptions) => {
     name: '三角形'
   })
   canvasEditor.canvas.add(triangle)
-  if (!option) {
-    triangle.center()
-  }
   canvasEditor.canvas.setActiveObject(triangle)
+  if (!option) {
+    canvasEditor.position('center')
+  }
 }
 
 const addPolygon = (option?: fabric.IPolylineOptions) => {
@@ -176,10 +175,10 @@ const addPolygon = (option?: fabric.IPolylineOptions) => {
     }
   })
   canvasEditor.canvas.add(polygon)
-  if (!option) {
-    polygon.center()
-  }
   canvasEditor.canvas.setActiveObject(polygon)
+  if (!option) {
+    canvasEditor.position('center')
+  }
 }
 
 const handleDragend = (type: string) => {
@@ -231,7 +230,7 @@ onMounted(() => {
     flex: 1;
     text-align: center;
     padding: 5px 0;
-    background: #f9f7f7;
+    background: $sub-bg-color;
     margin-left: 2px;
     cursor: pointer;
     &:hover {
