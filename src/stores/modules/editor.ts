@@ -13,9 +13,13 @@ const useEditorStore = defineStore('editor', () => {
     editor.canvasEditor = value
   }
 
+  const getCanvasEditor = () => {
+    return editor.canvasEditor
+  }
+
   return {
-    editor,
-    setCanvasEditor
+    setCanvasEditor,
+    getCanvasEditor
   }
 })
 

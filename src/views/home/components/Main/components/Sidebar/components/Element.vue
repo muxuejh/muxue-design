@@ -97,8 +97,7 @@ import useEditorStore from '@/stores/modules/editor'
 import { getPolygonVertices } from '@/utils/polygon'
 
 const editorStore = useEditorStore()
-const { editor } = editorStore
-const canvasEditor = editor.canvasEditor!
+const canvasEditor = editorStore.getCanvasEditor()!
 
 // 默认属性
 const defaultPosition = { shadow: '', fontFamily: 'arial' }
