@@ -43,6 +43,9 @@
 
       <!-- 属性区域 -->
       <div class="config-panel-container" :class="appStore.isConfigPanelCollapse ? 'hidden' : ''">
+        <div class="attr-item">
+          <Lock />
+        </div>
         <AlignCenter />
         <MenuSwitch target="configPanel" />
       </div>
@@ -66,6 +69,7 @@ import Layer from '@/components/sidebar/Layer.vue'
 
 import Zoom from '@/components/Zoom.vue'
 
+import Lock from '@/components/configPanel/Lock.vue'
 import AlignCenter from '@/components/configPanel/AlignCenter.vue'
 
 import Editor, {

@@ -100,5 +100,22 @@
     background: $main-bg-color;
     border-left: 1px solid $border-color;
     transition: all 0.3s;
+
+    .attr-item {
+      width: 100%;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      > :deep(.icon) {
+        width: 90px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $sub-bg-color;
+        cursor: pointer;
+      }
+    }
   }
 }
