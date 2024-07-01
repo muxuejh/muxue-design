@@ -58,6 +58,7 @@ import { onMounted, provide, ref } from 'vue'
 import { fabric } from 'fabric'
 import useAppStore from '@/stores/modules/app'
 import useEditorStore from '@/stores/modules/editor'
+import CanvasEvent from '@/core/event'
 
 import SvgIcon from '@/components/SvgIcon.vue'
 import MenuSwitch from '@/components/MenuSwitch.vue'
@@ -85,6 +86,8 @@ const appStore = useAppStore()
 // 创建编辑器
 const canvasEditor = new Editor()
 
+const canvasEvent = new CanvasEvent()
+
 onMounted(() => {
   // 初始化fabric
   const canvas = new fabric.Canvas('canvasId', {
@@ -99,7 +102,10 @@ onMounted(() => {
   canvasEditor.use(ControlsPlugin)
   canvasEditor.use(CenterAlignPlugin)
 
+  // @ts-ignore
   canvasEditor.rulerEnable()
+
+  canvasEvent.init(canvas)
 })
 
 const copms = [Template, Material, Element, Layer]

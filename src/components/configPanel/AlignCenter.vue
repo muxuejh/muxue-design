@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="editorStore.SelectMode" class="container">
     <el-tooltip content="水平居中">
       <SvgIcon class="icon" name="horizontally_center" @click="setPosition('centerH')" />
     </el-tooltip>
@@ -20,6 +20,7 @@ const editorStore = useEditorStore()
 const canvasEditor = editorStore.getCanvasEditor()!
 
 const setPosition = (position: string) => {
+  // @ts-ignore
   canvasEditor.position(position)
 }
 </script>
