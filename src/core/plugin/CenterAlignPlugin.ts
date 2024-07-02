@@ -36,9 +36,9 @@ class CenterAlignPlugin {
     )
   }
 
-  position(name: 'centerH' | 'center' | 'centerV') {
+  position(name: 'centerH' | 'center' | 'centerV', activeObject: fabric.Object) {
     const anignType = ['centerH', 'center', 'centerV']
-    const activeObject = this.canvas.getActiveObject()
+    // const activeObject = this.canvas.getActiveObject()
     if (anignType.includes(name) && activeObject) {
       const defaultWorkspace = this.canvas.getObjects().find(item => item.id === 'workspace')
       if (defaultWorkspace) {
@@ -56,7 +56,7 @@ class CenterAlignPlugin {
           text: '水平垂直居中',
           hotkey: 'Ctrl+V',
           disabled: false,
-          onclick: () => this.position('center')
+          onclick: () => this.position('center', activeObject)
         }
       ]
     }

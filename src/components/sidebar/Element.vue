@@ -117,10 +117,10 @@ const addRect = (option?: fabric.IRectOptions) => {
     name: '矩形'
   })
   canvasEditor.canvas.add(rect)
-  canvasEditor.canvas.setActiveObject(rect)
   if (!option) {
-    canvasEditor.position('center')
+    canvasEditor.position('center', rect)
   }
+  canvasEditor.canvas.setActiveObject(rect)
 }
 
 const addCircle = (option?: fabric.ICircleOptions) => {
@@ -133,10 +133,10 @@ const addCircle = (option?: fabric.ICircleOptions) => {
     name: '圆形'
   })
   canvasEditor.canvas.add(circle)
-  canvasEditor.canvas.setActiveObject(circle)
   if (!option) {
-    canvasEditor.position('center')
+    canvasEditor.position('center', circle)
   }
+  canvasEditor.canvas.setActiveObject(circle)
 }
 
 const addTriangle = (option?: fabric.ITriangleOptions) => {
@@ -150,10 +150,10 @@ const addTriangle = (option?: fabric.ITriangleOptions) => {
     name: '三角形'
   })
   canvasEditor.canvas.add(triangle)
-  canvasEditor.canvas.setActiveObject(triangle)
   if (!option) {
-    canvasEditor.position('center')
+    canvasEditor.position('center', triangle)
   }
+  canvasEditor.canvas.setActiveObject(triangle)
 }
 
 const addPolygon = (option?: fabric.IPolylineOptions) => {
@@ -175,10 +175,10 @@ const addPolygon = (option?: fabric.IPolylineOptions) => {
     }
   })
   canvasEditor.canvas.add(polygon)
-  canvasEditor.canvas.setActiveObject(polygon)
   if (!option) {
-    canvasEditor.position('center')
+    canvasEditor.position('center', polygon)
   }
+  canvasEditor.canvas.setActiveObject(polygon)
 }
 
 const handleDragend = (type: string) => {
