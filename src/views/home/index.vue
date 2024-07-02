@@ -47,6 +47,8 @@
           <Lock />
         </div>
         <AlignCenter />
+        <PositionAndSize />
+
         <MenuSwitch target="configPanel" />
       </div>
     </div>
@@ -72,6 +74,7 @@ import Zoom from '@/components/Zoom.vue'
 
 import Lock from '@/components/configPanel/Lock.vue'
 import AlignCenter from '@/components/configPanel/AlignCenter.vue'
+import PositionAndSize from '@/components/configPanel/PositionAndSize.vue'
 
 import Editor, {
   RulerPlugin,
@@ -123,6 +126,7 @@ const changeMenu = (index: number) => {
 }
 
 provide('canvasEditor', canvasEditor)
+provide('canvasEvent', canvasEvent)
 const editorStore = useEditorStore()
 editorStore.setCanvasEditor(canvasEditor)
 </script>

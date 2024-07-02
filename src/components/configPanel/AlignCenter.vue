@@ -20,14 +20,16 @@ const editorStore = useEditorStore()
 const canvasEditor = editorStore.getCanvasEditor()!
 
 const setPosition = (position: string) => {
+  const activeObject = canvasEditor.canvas.getActiveObject()
   // @ts-ignore
-  canvasEditor.position(position)
+  canvasEditor.position(position, activeObject)
 }
 </script>
 
 <style scoped lang="scss">
 .container {
   width: 100%;
+  margin-bottom: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -12,6 +12,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "element-plus": "^2.7.5",
+    "events": "^3.3.0",
     "fabric": "^5.3.0",
     "lodash-es": "^4.17.21",
     "pinia": "^2.1.7",
@@ -19,6 +20,7 @@
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@types/events": "^3.0.0",
     "@types/fabric": "^5.3.7",
     "@types/lodash-es": "^4.17.12",
     "@types/uuid": "^10.0.0",

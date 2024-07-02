@@ -11,6 +11,9 @@ dependencies:
   element-plus:
     specifier: ^2.7.5
     version: 2.7.5(vue@3.4.21)
+  events:
+    specifier: ^3.3.0
+    version: 3.3.0
   fabric:
     specifier: ^5.3.0
     version: 5.3.0
@@ -28,6 +31,9 @@ dependencies:
     version: 3.4.21(typescript@5.2.2)
 
 devDependencies:
+  '@types/events':
+    specifier: ^3.0.0
+    version: 3.0.0
   '@types/fabric':
     specifier: ^5.3.7
     version: 5.3.7
@@ -619,6 +625,10 @@ packages:
 
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+    dev: true
+
+  /@types/events@3.0.0:
+    resolution: {integrity: sha512-trOc4AAUThEz9hapPtSd7wf5tiQKvTtu5b371UxXdTuqzIh0ArcRspRP0i0Viu+LXstIQ1z96t1nsPxT9ol01g==}
     dev: true
 
   /@types/fabric@5.3.7:
@@ -2047,6 +2057,11 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
     dev: true
+
+  /events@3.3.0:
+    resolution: {integrity: sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==}
+    engines: {node: '>=0.8.x'}
+    dev: false
 
   /expand-brackets@2.1.4:
     resolution: {integrity: sha512-w/ozOKR9Obk3qoWeY/WDi6MFta9AoMR+zud60mdnbniMcBxRuFJyDt2LdX/14A1UABeqk+Uk+LDfUpvoGKppZA==}
