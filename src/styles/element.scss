@@ -1,0 +1,15 @@
+/* el-slider */
+.el-slider {
+  width: 230px !important;
+}
+.el-slider .el-slider__input {
+  width: 50px !important;
+  padding: 0 !important;
+}
+.el-slider .el-slider__input .el-input__wrapper {
+  padding: 0 !important;
+  height: 25px !important;
+}
+.el-slider__runway.show-input {
+  margin: 0 15px !important;
+}

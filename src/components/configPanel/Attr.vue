@@ -76,22 +76,8 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped lang="scss">
-:deep(.el-slider) {
-  width: 260px;
-}
-:deep(.el-slider .el-slider__input) {
-  width: 50px;
-  padding: 0;
-}
-:deep(.el-slider .el-slider__input .el-input__wrapper) {
-  padding: 0;
-  height: 25px;
-}
-:deep(.el-slider__runway.show-input) {
-  margin: 0 15px;
-}
-
 .box {
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
