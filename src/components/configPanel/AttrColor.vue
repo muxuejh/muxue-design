@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeMount, inject } from 'vue'
+import { ref, onMounted, onBeforeUnmount, inject } from 'vue'
 import ColorPicker from '@/components/ColorPicker.vue'
 import useEditorStore from '@/stores/modules/editor'
 import CanvasEvent from '@/core/event'
@@ -51,7 +51,7 @@ onMounted(() => {
   canvasEvent.on('objectModified', getObjectAttr)
 })
 
-onBeforeMount(() => {
+onBeforeUnmount(() => {
   canvasEvent.off('selectOne', getObjectAttr)
   canvasEvent.off('objectModified', getObjectAttr)
 })

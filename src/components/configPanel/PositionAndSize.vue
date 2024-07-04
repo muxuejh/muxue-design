@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, inject, onMounted, onBeforeMount } from 'vue'
+import { reactive, inject, onMounted, onBeforeUnmount } from 'vue'
 import useEditorStore from '@/stores/modules/editor'
 import CanvasEvent from '@/core/event'
 
@@ -66,7 +66,7 @@ onMounted(() => {
   canvasEvent.on('objectModified', getObjectAttr)
 })
 
-onBeforeMount(() => {
+onBeforeUnmount(() => {
   canvasEvent.off('selectOne', getObjectAttr)
   canvasEvent.off('objectModified', getObjectAttr)
 })

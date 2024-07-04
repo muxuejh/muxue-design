@@ -52,6 +52,7 @@
         <AlignCenter />
         <PositionAndSize />
         <AttrColor />
+        <Attr />
 
         <MenuSwitch target="configPanel" />
       </div>
@@ -80,6 +81,7 @@ import Lock from '@/components/configPanel/Lock.vue'
 import AlignCenter from '@/components/configPanel/AlignCenter.vue'
 import PositionAndSize from '@/components/configPanel/PositionAndSize.vue'
 import AttrColor from '@/components/configPanel/AttrColor.vue'
+import Attr from '@/components/configPanel/Attr.vue'
 
 import Editor, {
   RulerPlugin,
