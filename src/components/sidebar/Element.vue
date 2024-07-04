@@ -121,6 +121,7 @@ const addRect = (option?: fabric.IRectOptions) => {
     canvasEditor.position('center', rect)
   }
   canvasEditor.canvas.setActiveObject(rect)
+  canvasEditor.canvas.renderAll()
 }
 
 const addCircle = (option?: fabric.ICircleOptions) => {
@@ -137,6 +138,7 @@ const addCircle = (option?: fabric.ICircleOptions) => {
     canvasEditor.position('center', circle)
   }
   canvasEditor.canvas.setActiveObject(circle)
+  canvasEditor.canvas.renderAll()
 }
 
 const addTriangle = (option?: fabric.ITriangleOptions) => {
@@ -154,6 +156,7 @@ const addTriangle = (option?: fabric.ITriangleOptions) => {
     canvasEditor.position('center', triangle)
   }
   canvasEditor.canvas.setActiveObject(triangle)
+  canvasEditor.canvas.renderAll()
 }
 
 const addPolygon = (option?: fabric.IPolylineOptions) => {
@@ -179,6 +182,7 @@ const addPolygon = (option?: fabric.IPolylineOptions) => {
     canvasEditor.position('center', polygon)
   }
   canvasEditor.canvas.setActiveObject(polygon)
+  canvasEditor.canvas.renderAll()
 }
 
 const handleDragend = (type: string) => {
