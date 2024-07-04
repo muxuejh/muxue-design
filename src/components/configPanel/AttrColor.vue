@@ -2,8 +2,8 @@
   <div class="config-item" v-if="editorStore.SelectMode === 'one'">
     <h2 class="title">颜色</h2>
     <el-popover placement="right" :width="320" trigger="click">
-      <template #>
-        <ColorPicker
+      <template #default>
+        <ColorPanel
           v-model:color="fontColor"
           textColor="#000"
           strawColor="#000"
@@ -19,7 +19,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, inject } from 'vue'
-import ColorPicker from '@/components/ColorPicker.vue'
+import { fabric } from 'fabric'
+import ColorPanel from '@/components/ColorPanel.vue'
 import useEditorStore from '@/stores/modules/editor'
 import CanvasEvent from '@/core/event'
 

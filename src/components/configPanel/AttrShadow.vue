@@ -37,30 +37,18 @@
         @input="handleChange"
       />
     </div>
-    <div class="box">
+    <div class="box color-box">
       <div class="label">颜色</div>
-      <el-popover placement="right" :width="320" trigger="click">
-        <template #>
-          <ColorPicker
-            v-model:color="attts.shadow.color"
-            textColor="#000"
-            strawColor="#000"
-            @update:color="handleColorUpdate"
-          />
-        </template>
-        <template #reference>
-          <div class="color-bar" :style="{ backgroundColor: attts.shadow.color }"></div>
-        </template>
-      </el-popover>
+      <ColorPicker v-model:color="attts.shadow.color" @update:color="handleColorUpdate" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive, inject, onMounted, onBeforeUnmount } from 'vue'
+import { fabric } from 'fabric'
 import useEditorStore from '@/stores/modules/editor'
 import CanvasEvent from '@/core/event'
-import { fabric } from 'fabric'
 import ColorPicker from '@/components/ColorPicker.vue'
 
 const editorStore = useEditorStore()
@@ -97,9 +85,9 @@ const handleChange = () => {
   }
 }
 
-const handleColorUpdate = (color: string) => {
+const handleColorUpdate = (color: any) => {
   const activeObject = canvasEditor.canvas.getActiveObject()
-  attts.shadow.color = color
+  attts.shadow.color = color.value
   activeObject && activeObject.set('shadow', new fabric.Shadow(attts.shadow))
   canvasEditor.canvas.renderAll()
 }
@@ -121,12 +109,11 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.color-bar {
-  margin-top: 5px;
-  width: 220px;
-  height: 30px;
-  cursor: pointer;
+  &.color-box {
+    justify-content: flex-start;
+    .label {
+      width: 60px;
+    }
+  }
 }
 </style>
