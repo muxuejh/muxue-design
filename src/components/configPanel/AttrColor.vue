@@ -1,5 +1,6 @@
 <template>
-  <div v-if="editorStore.SelectMode === 'one'" class="attr-color">
+  <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+    <h2 class="title">颜色</h2>
     <el-popover placement="right" :width="320" trigger="click">
       <template #>
         <ColorPicker
@@ -57,11 +58,9 @@ onBeforeMount(() => {
 </script>
 
 <style scoped lang="scss">
-.attr-color {
-  .color-bar {
-    width: 100%;
-    height: 35px;
-    cursor: pointer;
-  }
+.color-bar {
+  width: 100%;
+  height: 35px;
+  cursor: pointer;
 }
 </style>

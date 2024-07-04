@@ -3,3 +3,28 @@
   padding: 0 !important;
   transition: all 0.3s;
 }
+
+.title {
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.config-item {
+  margin-bottom: 25px;
+}
+
+.attr-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > .icon {
+    width: 90px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $sub-bg-color;
+    cursor: pointer;
+  }
+}

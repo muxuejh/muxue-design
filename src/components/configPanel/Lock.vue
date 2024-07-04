@@ -1,5 +1,5 @@
 <template>
-  <el-tooltip v-if="editorStore.SelectMode === 'one'" :content="isLock ? '解锁' : '锁定'">
+  <el-tooltip :content="isLock ? '解锁' : '锁定'">
     <div v-if="!isLock" class="icon" @click="doLock(true)">
       <svg
         t="1719476299054"

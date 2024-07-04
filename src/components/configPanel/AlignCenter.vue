@@ -1,14 +1,17 @@
 <template>
-  <div v-if="editorStore.SelectMode" class="container">
-    <el-tooltip content="水平居中">
-      <SvgIcon class="icon" name="horizontally_center" @click="setPosition('centerH')" />
-    </el-tooltip>
-    <el-tooltip content="水平垂直居中">
-      <SvgIcon class="icon" name="align_center" @click="setPosition('center')" />
-    </el-tooltip>
-    <el-tooltip content="垂直居中">
-      <SvgIcon class="icon" name="vertical_center" @click="setPosition('centerV')" />
-    </el-tooltip>
+  <div class="config-item" v-if="editorStore.SelectMode">
+    <h2 class="title">居中对齐</h2>
+    <div class="attr-item">
+      <el-tooltip content="水平居中">
+        <SvgIcon class="icon" name="horizontally_center" @click="setPosition('centerH')" />
+      </el-tooltip>
+      <el-tooltip content="水平垂直居中">
+        <SvgIcon class="icon" name="align_center" @click="setPosition('center')" />
+      </el-tooltip>
+      <el-tooltip content="垂直居中">
+        <SvgIcon class="icon" name="vertical_center" @click="setPosition('centerV')" />
+      </el-tooltip>
+    </div>
   </div>
 </template>
 
@@ -26,21 +29,4 @@ const setPosition = (position: string) => {
 }
 </script>
 
-<style scoped lang="scss">
-.container {
-  width: 100%;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .icon {
-    width: 90px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: $sub-bg-color;
-    cursor: pointer;
-  }
-}
-</style>
+<style scoped lang="scss"></style>

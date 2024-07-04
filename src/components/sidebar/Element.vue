@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-divider content-position="left">基础元素</el-divider>
+    <h2 class="title">基础元素</h2>
     <div class="element-wrap">
       <div class="element" @click="addRect()" :draggable="true" @dragend="handleDragend('rect')">
         <svg

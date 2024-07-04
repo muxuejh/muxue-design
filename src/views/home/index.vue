@@ -43,8 +43,11 @@
 
       <!-- 属性区域 -->
       <div class="config-panel-container" :class="appStore.isConfigPanelCollapse ? 'hidden' : ''">
-        <div class="attr-item">
-          <Lock />
+        <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+          <h2 class="title">快捷操作</h2>
+          <div class="attr-item">
+            <Lock />
+          </div>
         </div>
         <AlignCenter />
         <PositionAndSize />
@@ -87,6 +90,7 @@ import Editor, {
 } from '@/core'
 
 const appStore = useAppStore()
+const editorStore = useEditorStore()
 
 // 创建编辑器
 const canvasEditor = new Editor()
@@ -129,7 +133,6 @@ const changeMenu = (index: number) => {
 
 provide('canvasEditor', canvasEditor)
 provide('canvasEvent', canvasEvent)
-const editorStore = useEditorStore()
 editorStore.setCanvasEditor(canvasEditor)
 </script>
 

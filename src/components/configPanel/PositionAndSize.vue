@@ -1,5 +1,6 @@
 <template>
-  <div v-if="editorStore.SelectMode === 'one'">
+  <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+    <h2 class="title">位置尺寸</h2>
     <div class="ipt-box">
       <el-input v-model.number="state.left" @change="value => handleChange('left', Number(value))">
         <template #prefix>X</template>
@@ -77,6 +78,9 @@ onBeforeMount(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &:last-child {
+    margin-bottom: 0;
+  }
   :deep(.el-input) {
     width: 140px;
   }
