@@ -40,11 +40,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref, inject, onBeforeUnmount } from 'vue'
 import useEditorStore from '@/stores/modules/editor'
+import CanvasEvent from '@/core/event'
 
 const editorStore = useEditorStore()
 const canvasEditor = editorStore.getCanvasEditor()!
+const canvasEvent = inject('canvasEvent') as CanvasEvent
 
 const isLock = ref(false)
 const doLock = (lock: boolean) => {
@@ -59,6 +61,20 @@ const doLock = (lock: boolean) => {
   activeObject.selectable = !lock
   canvasEditor.canvas.renderAll()
 }
+
+const handleSelected = (e?: fabric.Object[]) => {
+  if (e && e[0]) {
+    isLock.value = e[0].hasControls ? false : true
+  }
+}
+
+onMounted(() => {
+  canvasEvent.on('selectOne', handleSelected)
+})
+
+onBeforeUnmount(() => {
+  canvasEvent.off('selectOne', handleSelected)
+})
 </script>
 
 <style scoped></style>
