@@ -1,3 +1,6 @@
+/**
+ * 元素属性操作
+ */
 import { inject, onBeforeUnmount, onMounted } from 'vue'
 import CanvasEvent from '@/core/event'
 import useEditorStore from '@/stores/modules/editor'

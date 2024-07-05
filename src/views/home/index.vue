@@ -47,6 +47,8 @@
           <h2 class="title">快捷操作</h2>
           <div class="attr-item">
             <Lock />
+            <Copy />
+            <Del />
           </div>
         </div>
         <AlignCenter />
@@ -80,6 +82,8 @@ import Layer from '@/components/sidebar/Layer.vue'
 import Zoom from '@/components/Zoom.vue'
 
 import Lock from '@/components/configPanel/Lock.vue'
+import Copy from '@/components/configPanel/Copy.vue'
+import Del from '@/components/configPanel/Del.vue'
 import AlignCenter from '@/components/configPanel/AlignCenter.vue'
 import PositionAndSize from '@/components/configPanel/PositionAndSize.vue'
 import AttrColor from '@/components/configPanel/AttrColor.vue'
