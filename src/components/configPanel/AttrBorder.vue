@@ -10,12 +10,15 @@
         :step="1"
         show-input
         :show-input-controls="false"
-        @input="(value: number) => handleChange('strokeWidth', value)"
+        @input="(value: number) => setFabricObjectAttr('strokeWidth', value)"
       />
     </div>
     <div class="box color-box">
       <div class="label">颜色</div>
-      <ColorPicker v-model:color="attrs.stroke" @update:color="handleColorUpdate" />
+      <ColorPicker
+        v-model:color="attrs.stroke"
+        @update:color="setFabricObjectAttr('stroke', $event.value)"
+      />
     </div>
     <div class="box">
       <div class="label">样式</div>
@@ -37,15 +40,14 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, inject, onMounted, onBeforeUnmount } from 'vue'
+import { reactive } from 'vue'
 import { fabric } from 'fabric'
 import useEditorStore from '@/stores/modules/editor'
-import CanvasEvent from '@/core/event'
 import ColorPicker from '@/components/ColorPicker.vue'
+import useFabricObjectAttr from '@/hooks/useFarbicObjectAttr'
 
 const editorStore = useEditorStore()
 const canvasEditor = editorStore.getCanvasEditor()!
-const canvasEvent = inject('canvasEvent') as CanvasEvent
 
 const attrs = reactive({
   stroke: '#fff',
@@ -72,10 +74,7 @@ const strokeDashList = [
   }
 ]
 
-const getObjectAttr = (e?: fabric.Object[]) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
-  // 不是当前obj，则跳过
-  if (e && e.length > 0 && e[0] !== activeObject) return
+const getObjectAttr = (activeObject: fabric.Object) => {
   if (activeObject) {
     attrs.stroke = activeObject.get('stroke') as string
     attrs.strokeWidth = activeObject.get('strokeWidth') as number
@@ -96,24 +95,11 @@ const getObjectAttr = (e?: fabric.Object[]) => {
   }
 }
 
-const handleChange = (key: any, value: any) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
+const handleChange = (activeObject: fabric.Object, key: any, value: any) => {
   if (activeObject) {
     activeObject.set(key, value)
     activeObject.set('strokeUniform', true)
-    canvasEditor.canvas.renderAll()
   }
-}
-
-const handleColorUpdate = (color: any) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
-  attrs.stroke = color.value
-  if (activeObject) {
-    activeObject.set('stroke', color.value)
-    activeObject.set('strokeUniform', true)
-    canvasEditor.canvas.renderAll()
-  }
-  canvasEditor.canvas.renderAll()
 }
 
 const changeBorder = (val: string) => {
@@ -125,15 +111,7 @@ const changeBorder = (val: string) => {
   }
 }
 
-onMounted(() => {
-  canvasEvent.on('selectOne', getObjectAttr)
-  canvasEvent.on('objectModified', getObjectAttr)
-})
-
-onBeforeUnmount(() => {
-  canvasEvent.off('selectOne', getObjectAttr)
-  canvasEvent.off('objectModified', getObjectAttr)
-})
+const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 </script>
 
 <style scoped lang="scss">

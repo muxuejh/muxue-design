@@ -4,58 +4,41 @@
     <el-popover placement="right" :width="320" trigger="click">
       <template #default>
         <ColorPanel
-          v-model:color="fontColor"
+          v-model:color="color"
           textColor="#000"
           strawColor="#000"
-          @update:color="handleColorUpdate"
+          @update:color="setFabricObjectAttr"
         />
       </template>
       <template #reference>
-        <div class="color-bar" :style="{ backgroundColor: fontColor }"></div>
+        <div class="color-bar" :style="{ backgroundColor: color }"></div>
       </template>
     </el-popover>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, inject } from 'vue'
+import { ref } from 'vue'
 import { fabric } from 'fabric'
 import ColorPanel from '@/components/ColorPanel.vue'
 import useEditorStore from '@/stores/modules/editor'
-import CanvasEvent from '@/core/event'
+import useFabricObjectAttr from '@/hooks/useFarbicObjectAttr'
 
 const editorStore = useEditorStore()
-const canvasEditor = editorStore.getCanvasEditor()!
-const canvasEvent = inject('canvasEvent') as CanvasEvent
 
-const fontColor = ref('#000000')
+const color = ref('#000000')
 
-const handleColorUpdate = (color: string) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
-  activeObject && activeObject.set('fill', color)
-  canvasEditor.canvas.renderAll()
-}
-
-const getObjectAttr = (e?: fabric.Object[]) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
-
-  // 不是当前obj，则跳过
-  if (e && e.length > 0 && e[0] !== activeObject) return
-
+const getObjectAttr = (activeObject: fabric.Object) => {
   if (activeObject) {
-    fontColor.value = activeObject.fill as string
+    color.value = activeObject.fill as string
   }
 }
 
-onMounted(() => {
-  canvasEvent.on('selectOne', getObjectAttr)
-  canvasEvent.on('objectModified', getObjectAttr)
-})
+const handleChange = (activeObject: fabric.Object) => {
+  activeObject && activeObject.set('fill', color.value)
+}
 
-onBeforeUnmount(() => {
-  canvasEvent.off('selectOne', getObjectAttr)
-  canvasEvent.off('objectModified', getObjectAttr)
-})
+const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 </script>
 
 <style scoped lang="scss">

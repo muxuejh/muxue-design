@@ -9,7 +9,7 @@
         :step="1"
         show-input
         :show-input-controls="false"
-        @input="value => handleChange('angle', value)"
+        @input="value => setFabricObjectAttr('angle', value)"
       />
     </div>
     <div class="box">
@@ -21,58 +21,43 @@
         :step="0.1"
         show-input
         :show-input-controls="false"
-        @input="value => handleChange('opacity', value)"
+        @input="value => setFabricObjectAttr('opacity', value)"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, inject, onMounted, onBeforeUnmount } from 'vue'
+import { reactive } from 'vue'
+import { fabric } from 'fabric'
 import useEditorStore from '@/stores/modules/editor'
-import CanvasEvent from '@/core/event'
+import useFabricObjectAttr from '@/hooks/useFarbicObjectAttr'
 
 const editorStore = useEditorStore()
 const canvasEditor = editorStore.getCanvasEditor()!
-const canvasEvent = inject('canvasEvent') as CanvasEvent
 
 const attrs = reactive({
   angle: 0,
   opacity: 1
 })
 
-const getObjectAttr = (e?: fabric.Object[]) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
-  // 不是当前obj，则跳过
-  if (e && e.length > 0 && e[0] !== activeObject) return
+const getObjectAttr = (activeObject: fabric.Object) => {
   if (activeObject) {
     attrs.angle = activeObject.angle!
     attrs.opacity = activeObject.opacity!
   }
 }
 
-const handleChange = (key: any, value: any) => {
-  const activeObject = editorStore.getActiveObjects()[0]
+const handleChange = (activeObject: fabric.Object, key: any, value: any) => {
   if (key === 'angle') {
     activeObject.rotate(value)
     canvasEditor.canvas.renderAll()
     return
   }
   activeObject && activeObject.set(key, value)
-  canvasEditor.canvas.renderAll()
-
-  getObjectAttr()
 }
 
-onMounted(() => {
-  canvasEvent.on('selectOne', getObjectAttr)
-  canvasEvent.on('objectModified', getObjectAttr)
-})
-
-onBeforeUnmount(() => {
-  canvasEvent.off('selectOne', getObjectAttr)
-  canvasEvent.off('objectModified', getObjectAttr)
-})
+const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 </script>
 
 <style scoped lang="scss">

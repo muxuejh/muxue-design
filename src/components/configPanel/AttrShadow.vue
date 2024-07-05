@@ -10,7 +10,7 @@
         :step="1"
         show-input
         :show-input-controls="false"
-        @input="handleChange"
+        @input="setFabricObjectAttr"
       />
     </div>
     <div class="box">
@@ -22,7 +22,7 @@
         :step="1"
         show-input
         :show-input-controls="false"
-        @input="handleChange"
+        @input="setFabricObjectAttr"
       />
     </div>
     <div class="box">
@@ -34,26 +34,24 @@
         :step="1"
         show-input
         :show-input-controls="false"
-        @input="handleChange"
+        @input="setFabricObjectAttr"
       />
     </div>
     <div class="box color-box">
       <div class="label">颜色</div>
-      <ColorPicker v-model:color="attts.shadow.color" @update:color="handleColorUpdate" />
+      <ColorPicker v-model:color="attts.shadow.color" @update:color="setFabricObjectAttr" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, inject, onMounted, onBeforeUnmount } from 'vue'
+import { reactive } from 'vue'
 import { fabric } from 'fabric'
 import useEditorStore from '@/stores/modules/editor'
-import CanvasEvent from '@/core/event'
 import ColorPicker from '@/components/ColorPicker.vue'
+import useFabricObjectAttr from '@/hooks/useFarbicObjectAttr'
 
 const editorStore = useEditorStore()
-const canvasEditor = editorStore.getCanvasEditor()!
-const canvasEvent = inject('canvasEvent') as CanvasEvent
 
 const attts = reactive({
   shadow: {
@@ -64,10 +62,7 @@ const attts = reactive({
   }
 })
 
-const getObjectAttr = (e?: fabric.Object[]) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
-  // 不是当前obj，则跳过
-  if (e && e.length > 0 && e[0] !== activeObject) return
+const getObjectAttr = (activeObject: fabric.Object) => {
   if (activeObject) {
     // @ts-ignore
     attts.shadow = activeObject.get('shadow') || {}
@@ -77,30 +72,13 @@ const getObjectAttr = (e?: fabric.Object[]) => {
   }
 }
 
-const handleChange = () => {
-  const activeObject = editorStore.getActiveObjects()[0]
+const handleChange = (activeObject: fabric.Object) => {
   if (activeObject) {
     activeObject.set('shadow', new fabric.Shadow(attts.shadow))
-    canvasEditor.canvas.renderAll()
   }
 }
 
-const handleColorUpdate = (color: any) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
-  attts.shadow.color = color.value
-  activeObject && activeObject.set('shadow', new fabric.Shadow(attts.shadow))
-  canvasEditor.canvas.renderAll()
-}
-
-onMounted(() => {
-  canvasEvent.on('selectOne', getObjectAttr)
-  canvasEvent.on('objectModified', getObjectAttr)
-})
-
-onBeforeUnmount(() => {
-  canvasEvent.off('selectOne', getObjectAttr)
-  canvasEvent.off('objectModified', getObjectAttr)
-})
+const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 </script>
 
 <style scoped lang="scss">

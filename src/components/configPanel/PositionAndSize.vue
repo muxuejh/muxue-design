@@ -2,21 +2,27 @@
   <div class="config-item" v-if="editorStore.SelectMode === 'one'">
     <h2 class="title">位置尺寸</h2>
     <div class="ipt-box">
-      <el-input v-model.number="state.left" @change="value => handleChange('left', Number(value))">
+      <el-input
+        v-model.number="state.left"
+        @change="value => setFabricObjectAttr('left', Number(value))"
+      >
         <template #prefix>X</template>
       </el-input>
-      <el-input v-model="state.top" @change="value => handleChange('top', Number(value))">
+      <el-input v-model="state.top" @change="value => setFabricObjectAttr('top', Number(value))">
         <template #prefix>Y</template>
       </el-input>
     </div>
     <div class="ipt-box">
       <el-input
         v-model.number="state.width"
-        @change="value => handleChange('width', Number(value))"
+        @change="value => setFabricObjectAttr('width', Number(value))"
       >
         <template #prefix>W</template>
       </el-input>
-      <el-input v-model="state.height" @change="value => handleChange('height', Number(value))">
+      <el-input
+        v-model="state.height"
+        @change="value => setFabricObjectAttr('height', Number(value))"
+      >
         <template #prefix>H</template>
       </el-input>
     </div>
@@ -24,13 +30,11 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, inject, onMounted, onBeforeUnmount } from 'vue'
+import { reactive } from 'vue'
 import useEditorStore from '@/stores/modules/editor'
-import CanvasEvent from '@/core/event'
+import useFabricObjectAttr from '@/hooks/useFarbicObjectAttr'
 
-const canvasEvent = inject('canvasEvent') as CanvasEvent
 const editorStore = useEditorStore()
-const canvasEditor = editorStore.getCanvasEditor()!
 
 const state = reactive({
   left: 0,
@@ -39,12 +43,7 @@ const state = reactive({
   height: 0
 })
 
-const getObjectAttr = (e?: fabric.Object[]) => {
-  const activeObject = canvasEditor.canvas.getActiveObject()
-
-  // 不是当前obj，则跳过
-  if (e && e.length > 0 && e[0] !== activeObject) return
-
+const getObjectAttr = (activeObject: fabric.Object) => {
   if (activeObject) {
     state.left = Number(activeObject.get('left')!.toFixed(2))
     state.top = Number(activeObject.get('top')!.toFixed(2))
@@ -53,23 +52,11 @@ const getObjectAttr = (e?: fabric.Object[]) => {
   }
 }
 
-const handleChange = (key: any, value: number) => {
-  const activeObject = editorStore.getActiveObjects()[0]
+const handleChange = (activeObject: fabric.Object, key: any, value: number) => {
   activeObject && activeObject.set(key, value)
-  canvasEditor.canvas.renderAll()
-
-  getObjectAttr()
 }
 
-onMounted(() => {
-  canvasEvent.on('selectOne', getObjectAttr)
-  canvasEvent.on('objectModified', getObjectAttr)
-})
-
-onBeforeUnmount(() => {
-  canvasEvent.off('selectOne', getObjectAttr)
-  canvasEvent.off('objectModified', getObjectAttr)
-})
+const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 </script>
 
 <style scoped lang="scss">
