@@ -4,7 +4,7 @@
     <div class="box">
       <div class="label">半径</div>
       <el-slider
-        v-model="attts.shadow.blur"
+        v-model="objectAttrs.shadow.blur"
         :min="0"
         :max="10"
         :step="1"
@@ -16,7 +16,7 @@
     <div class="box">
       <div class="label">水平</div>
       <el-slider
-        v-model="attts.shadow.offsetX"
+        v-model="objectAttrs.shadow.offsetX"
         :min="0"
         :max="10"
         :step="1"
@@ -28,7 +28,7 @@
     <div class="box">
       <div class="label">垂直</div>
       <el-slider
-        v-model="attts.shadow.offsetY"
+        v-model="objectAttrs.shadow.offsetY"
         :min="0"
         :max="10"
         :step="1"
@@ -39,7 +39,7 @@
     </div>
     <div class="box color-box">
       <div class="label">颜色</div>
-      <ColorPicker v-model:color="attts.shadow.color" @update:color="setFabricObjectAttr" />
+      <ColorPicker v-model:color="objectAttrs.shadow.color" @update:color="setFabricObjectAttr" />
     </div>
   </div>
 </template>
@@ -49,11 +49,11 @@ import { reactive } from 'vue'
 import { fabric } from 'fabric'
 import useEditorStore from '@/stores/modules/editor'
 import ColorPicker from '@/components/ColorPicker.vue'
-import useFabricObjectAttr from '@/hooks/useFarbicObjectAttr'
+import useFabricObjectAttr from '@/hooks/useFabricObjectAttr'
 
 const editorStore = useEditorStore()
 
-const attts = reactive({
+const objectAttrs = reactive({
   shadow: {
     blur: 0,
     offsetX: 0,
@@ -62,19 +62,19 @@ const attts = reactive({
   }
 })
 
-const getObjectAttr = (activeObject: fabric.Object) => {
+const getObjectAttr = (activeObject: fabric.Object | undefined) => {
   if (activeObject) {
     // @ts-ignore
-    attts.shadow = activeObject.get('shadow') || {}
-    if (!attts.shadow.color) {
-      attts.shadow.color = '#000000'
+    objectAttrs.shadow = activeObject.get('shadow') || {}
+    if (!objectAttrs.shadow.color) {
+      objectAttrs.shadow.color = '#000000'
     }
   }
 }
 
-const handleChange = (activeObject: fabric.Object) => {
+const handleChange = (activeObject: fabric.Object | undefined) => {
   if (activeObject) {
-    activeObject.set('shadow', new fabric.Shadow(attts.shadow))
+    activeObject.set('shadow', new fabric.Shadow(objectAttrs.shadow))
   }
 }
 

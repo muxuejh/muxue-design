@@ -4,7 +4,7 @@
     <div class="box">
       <div class="label">宽度</div>
       <el-slider
-        v-model="attrs.strokeWidth"
+        v-model="objectAttrs.strokeWidth"
         :min="1"
         :max="10"
         :step="1"
@@ -16,14 +16,14 @@
     <div class="box color-box">
       <div class="label">颜色</div>
       <ColorPicker
-        v-model:color="attrs.stroke"
+        v-model:color="objectAttrs.stroke"
         @update:color="setFabricObjectAttr('stroke', $event.value)"
       />
     </div>
     <div class="box">
       <div class="label">样式</div>
       <el-select
-        v-model="attrs.strokeDashArray"
+        v-model="objectAttrs.strokeDashArray"
         placeholder="边框样式"
         style="width: 225px"
         @change="changeBorder"
@@ -44,12 +44,12 @@ import { reactive } from 'vue'
 import { fabric } from 'fabric'
 import useEditorStore from '@/stores/modules/editor'
 import ColorPicker from '@/components/ColorPicker.vue'
-import useFabricObjectAttr from '@/hooks/useFarbicObjectAttr'
+import useFabricObjectAttr from '@/hooks/useFabricObjectAttr'
 
 const editorStore = useEditorStore()
 const canvasEditor = editorStore.getCanvasEditor()!
 
-const attrs = reactive({
+const objectAttrs = reactive({
   stroke: '#fff',
   strokeWidth: 1,
   strokeDashArray: []
@@ -74,12 +74,12 @@ const strokeDashList = [
   }
 ]
 
-const getObjectAttr = (activeObject: fabric.Object) => {
+const getObjectAttr = (activeObject: fabric.Object | undefined) => {
   if (activeObject) {
-    attrs.stroke = activeObject.get('stroke') as string
-    attrs.strokeWidth = activeObject.get('strokeWidth') as number
-    if (!attrs.stroke) {
-      attrs.stroke = '#fff'
+    objectAttrs.stroke = activeObject.get('stroke') as string
+    objectAttrs.strokeWidth = activeObject.get('strokeWidth') as number
+    if (!objectAttrs.stroke) {
+      objectAttrs.stroke = '#fff'
     }
     const strokeDashArray = JSON.stringify(activeObject.get('strokeDashArray') || [])
     const target = strokeDashList.find(item => {
@@ -90,12 +90,12 @@ const getObjectAttr = (activeObject: fabric.Object) => {
     })
     if (target) {
       // @ts-ignore
-      attrs.strokeDashArray = target.label
+      objectAttrs.strokeDashArray = target.label
     }
   }
 }
 
-const handleChange = (activeObject: fabric.Object, key: any, value: any) => {
+const handleChange = (activeObject: fabric.Object | undefined, key: any, value: any) => {
   if (activeObject) {
     activeObject.set(key, value)
     activeObject.set('strokeUniform', true)

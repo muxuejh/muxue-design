@@ -22,19 +22,19 @@ import { ref } from 'vue'
 import { fabric } from 'fabric'
 import ColorPanel from '@/components/ColorPanel.vue'
 import useEditorStore from '@/stores/modules/editor'
-import useFabricObjectAttr from '@/hooks/useFarbicObjectAttr'
+import useFabricObjectAttr from '@/hooks/useFabricObjectAttr'
 
 const editorStore = useEditorStore()
 
 const color = ref('#000000')
 
-const getObjectAttr = (activeObject: fabric.Object) => {
+const getObjectAttr = (activeObject: fabric.Object | undefined) => {
   if (activeObject) {
     color.value = activeObject.fill as string
   }
 }
 
-const handleChange = (activeObject: fabric.Object) => {
+const handleChange = (activeObject: fabric.Object | undefined) => {
   activeObject && activeObject.set('fill', color.value)
 }
 

@@ -41,6 +41,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, inject, onBeforeUnmount } from 'vue'
+import { fabric } from 'fabric'
 import useEditorStore from '@/stores/modules/editor'
 import CanvasEvent from '@/core/event'
 

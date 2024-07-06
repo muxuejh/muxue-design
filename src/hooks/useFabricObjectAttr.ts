@@ -6,9 +6,9 @@ import CanvasEvent from '@/core/event'
 import useEditorStore from '@/stores/modules/editor'
 import { fabric } from 'fabric'
 
-export default function useFarbicObjectAttr(
-  getAttributeCallback: (activeObject?: fabric.Object) => void,
-  setAttributeCallback: (activeObject?: fabric.Object, key?: any, value?: any) => void
+export default function useFabricObjectAttr(
+  getAttributeCallback: (activeObject?: fabric.Object | undefined) => void,
+  setAttributeCallback: (activeObject?: fabric.Object | undefined, key?: any, value?: any) => void
 ) {
   const editorStore = useEditorStore()
   const canvasEditor = editorStore.getCanvasEditor()!
