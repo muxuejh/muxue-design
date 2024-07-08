@@ -1,5 +1,8 @@
 <template>
-  <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+  <div
+    class="config-item"
+    v-if="editorStore.selectMode === 'one' && editorStore.selectType !== 'group'"
+  >
     <h2 class="title">阴影</h2>
     <div class="box">
       <div class="label">半径</div>

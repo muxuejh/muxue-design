@@ -1,5 +1,14 @@
 <template>
-  <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+  <div
+    class="config-item"
+    v-if="
+      editorStore.selectMode === 'one' &&
+      editorStore.selectType !== 'line' &&
+      editorStore.selectType !== 'thinTailArrow' &&
+      editorStore.selectType !== 'path' &&
+      editorStore.selectType !== 'group'
+    "
+  >
     <h2 class="title">位置尺寸</h2>
     <div class="ipt-box">
       <el-input

@@ -1,5 +1,13 @@
 <template>
-  <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+  <div
+    class="config-item"
+    v-if="
+      editorStore.selectMode === 'one' &&
+      editorStore.selectType !== 'line' &&
+      editorStore.selectType !== 'path' &&
+      editorStore.selectType !== 'group'
+    "
+  >
     <h2 class="title">颜色</h2>
     <el-popover placement="right" :width="320" trigger="click">
       <template #default>

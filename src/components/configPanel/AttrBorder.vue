@@ -1,12 +1,15 @@
 <template>
-  <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+  <div
+    class="config-item"
+    v-if="editorStore.selectMode === 'one' && editorStore.selectType !== 'group'"
+  >
     <h2 class="title">边框</h2>
     <div class="box">
       <div class="label">宽度</div>
       <el-slider
         v-model="objectAttrs.strokeWidth"
         :min="1"
-        :max="10"
+        :max="50"
         :step="1"
         show-input
         :show-input-controls="false"
@@ -77,7 +80,11 @@ const strokeDashList = [
 const getObjectAttr = (activeObject: fabric.Object | undefined) => {
   if (activeObject) {
     objectAttrs.stroke = activeObject.get('stroke') as string
-    objectAttrs.strokeWidth = activeObject.get('strokeWidth') as number
+    if (activeObject.type === 'path') {
+      objectAttrs.strokeWidth = 20
+    } else {
+      objectAttrs.strokeWidth = activeObject.get('strokeWidth') as number
+    }
     if (!objectAttrs.stroke) {
       objectAttrs.stroke = '#fff'
     }

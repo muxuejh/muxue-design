@@ -10,7 +10,8 @@ const useEditorStore = defineStore('editor', () => {
     activeObjects: [] as fabric.Object[] // 当前选中的对象
   })
 
-  const SelectMode = ref('') // 事件类型
+  const selectMode = ref('') // 事件类型
+  const selectType = ref('') // 选中元素的类型
 
   const setCanvasEditor = (value: IEditor) => {
     editor.canvasEditor = value
@@ -27,7 +28,11 @@ const useEditorStore = defineStore('editor', () => {
   }
 
   const setEventType = (value: string) => {
-    SelectMode.value = value
+    selectMode.value = value
+  }
+
+  const setSelectType = (value: string) => {
+    selectType.value = value
   }
 
   return {
@@ -36,7 +41,9 @@ const useEditorStore = defineStore('editor', () => {
     setActiveObjects,
     getActiveObjects,
     setEventType,
-    SelectMode
+    setSelectType,
+    selectMode,
+    selectType
   }
 })
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+  <div class="config-item" v-if="editorStore.selectMode === 'one'">
     <div class="box">
       <div class="label">旋转</div>
       <el-slider

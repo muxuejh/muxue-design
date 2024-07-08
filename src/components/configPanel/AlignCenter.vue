@@ -1,5 +1,5 @@
 <template>
-  <div class="config-item" v-if="editorStore.SelectMode">
+  <div class="config-item" v-if="editorStore.selectMode">
     <h2 class="title">居中对齐</h2>
     <div class="attr-item">
       <el-tooltip content="水平居中">

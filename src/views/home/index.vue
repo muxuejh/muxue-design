@@ -46,9 +46,9 @@
       <!-- 属性区域 -->
       <div class="config-panel-container" :class="appStore.isConfigPanelCollapse ? 'hidden' : ''">
         <el-scrollbar class="scroll-wrap" height="100%">
-          <WorkspaceSize v-show="!editorStore.SelectMode" />
-          <WorkspaceBgColor v-show="!editorStore.SelectMode" />
-          <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+          <WorkspaceSize v-show="!editorStore.selectMode" />
+          <WorkspaceBgColor v-show="!editorStore.selectMode" />
+          <div class="config-item" v-if="editorStore.selectMode === 'one'">
             <h2 class="title">快捷操作</h2>
             <div class="attr-item">
               <Lock />

@@ -343,6 +343,7 @@ const freeDraw = (type: string) => {
       canvasEditor.canvas.freeDrawingBrush = new fabric.CircleBrush(canvasEditor.canvas)
     }
     canvasEditor.canvas.freeDrawingBrush.width = 20
+    canvasEditor.canvas.freeDrawingBrush.color = '#000000'
   }
 }
 
