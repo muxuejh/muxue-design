@@ -66,6 +66,7 @@ const handleColorUpdate = (value: string) => {
     flex: 1;
     height: 100%;
     margin-right: 5px;
+    border: 1px solid $border-color;
   }
 }
 </style>

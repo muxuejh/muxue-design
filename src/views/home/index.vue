@@ -43,6 +43,8 @@
 
       <!-- 属性区域 -->
       <div class="config-panel-container" :class="appStore.isConfigPanelCollapse ? 'hidden' : ''">
+        <WorkspaceSize v-show="!editorStore.SelectMode" />
+        <WorkspaceBgColor v-show="!editorStore.SelectMode" />
         <div class="config-item" v-if="editorStore.SelectMode === 'one'">
           <h2 class="title">快捷操作</h2>
           <div class="attr-item">
@@ -81,6 +83,8 @@ import Layer from '@/components/sidebar/Layer.vue'
 
 import Zoom from '@/components/Zoom.vue'
 
+import WorkspaceSize from '@/components/configPanel/WorkspaceSize.vue'
+import WorkspaceBgColor from '@/components/configPanel/WorkspaceBgColor.vue'
 import Lock from '@/components/configPanel/Lock.vue'
 import Copy from '@/components/configPanel/Copy.vue'
 import Del from '@/components/configPanel/Del.vue'
