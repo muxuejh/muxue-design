@@ -7,7 +7,10 @@
         class="color-item"
         v-for="(color, index) in colorList"
         :key="index"
-        :style="{ backgroundColor: color }"
+        :style="{
+          backgroundColor: color,
+          border: color === '#ffffff' ? '1px solid #ccc' : 'none'
+        }"
         @click="setColor(color)"
       ></div>
     </div>
@@ -40,11 +43,12 @@ const colorList = ref([
   '#bfbfbf',
   '#7f7f7f',
   '#52616b',
-  '#000000'
+  '#000000',
+  '#ffffff'
 ])
 const workspaceBgColor = ref('#ffffff')
 const handleUpdateColor = (val: string) => {
-  workspaceBgColor.value = val.value
+  workspaceBgColor.value = val
   setColor(workspaceBgColor.value)
 }
 const setColor = (color: string) => {

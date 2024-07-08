@@ -17,7 +17,7 @@
       <div class="label">颜色</div>
       <ColorPicker
         v-model:color="objectAttrs.stroke"
-        @update:color="setFabricObjectAttr('stroke', $event.value)"
+        @update:color="setFabricObjectAttr('stroke', $event)"
       />
     </div>
     <div class="box">
