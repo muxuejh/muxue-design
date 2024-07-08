@@ -54,11 +54,12 @@
 
     .menu-content {
       width: $sidebar-menu-content-width;
-      padding: 20px 15px;
-      overflow-y: scroll;
       background: $main-bg-color;
       border-right: 1px solid $border-color;
       transition: all 0.3s;
+      .scroll-wrap{
+        padding: 20px 15px;
+      }
     }
   }
 
@@ -97,10 +98,13 @@
     position: relative;
     width: $config-panel-width;
     height: 100%;
-    padding: 20px 15px;
-    overflow-y: scroll;
     background: $main-bg-color;
     border-left: 1px solid $border-color;
     transition: all 0.3s;
+    .scroll-wrap{
+      width: $config-panel-width;
+      height: 100%;
+      padding: 20px 15px;
+    }
   }
 }

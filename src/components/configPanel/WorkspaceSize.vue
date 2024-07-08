@@ -16,11 +16,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import useEditorStore from '@/stores/modules/editor'
+
 const editorStore = useEditorStore()
 const canvasEditor = editorStore.getCanvasEditor()!
+
 const defaultSize = { width: 900, height: 1200 }
 const width = ref(defaultSize.width)
 const height = ref(defaultSize.height)
+
 const setSize = () => {
   // @ts-ignore
   canvasEditor.setSize(width.value, height.value)

@@ -21,8 +21,10 @@
 import { ref } from 'vue'
 import useEditorStore from '@/stores/modules/editor'
 import ColorPicker from '@/components/ColorPicker.vue'
+
 const editorStore = useEditorStore()
 const canvasEditor = editorStore.getCanvasEditor()!
+
 const colorList = ref([
   '#e02020',
   '#fa6401',
@@ -34,12 +36,12 @@ const colorList = ref([
   '#6236ff',
   '#b729e0',
   '#c3bef0',
-  '#f6f6f6',
   '#ffd3b5',
   '#dcedc2',
   '#f73859',
   '#5e63b6',
   '#a7ff83',
+  '#f6f6f6',
   '#bfbfbf',
   '#7f7f7f',
   '#52616b',
@@ -47,10 +49,12 @@ const colorList = ref([
   '#ffffff'
 ])
 const workspaceBgColor = ref('#ffffff')
+
 const handleUpdateColor = (val: string) => {
   workspaceBgColor.value = val
   setColor(workspaceBgColor.value)
 }
+
 const setColor = (color: string) => {
   workspaceBgColor.value = color
   const workspace = canvasEditor.canvas.getObjects().find(obj => obj.id === 'workspace')

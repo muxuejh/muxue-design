@@ -24,7 +24,9 @@
         </div>
 
         <div class="menu-content" :class="appStore.isMenuContentCollapse ? 'hidden' : ''">
-          <component v-show="!appStore.isMenuContentCollapse" :is="copms[activeIndex]" />
+          <el-scrollbar class="scroll-wrap" height="100%">
+            <component v-show="!appStore.isMenuContentCollapse" :is="comps[activeIndex]" />
+          </el-scrollbar>
         </div>
 
         <MenuSwitch target="sidebar" />
@@ -43,22 +45,24 @@
 
       <!-- 属性区域 -->
       <div class="config-panel-container" :class="appStore.isConfigPanelCollapse ? 'hidden' : ''">
-        <WorkspaceSize v-show="!editorStore.SelectMode" />
-        <WorkspaceBgColor v-show="!editorStore.SelectMode" />
-        <div class="config-item" v-if="editorStore.SelectMode === 'one'">
-          <h2 class="title">快捷操作</h2>
-          <div class="attr-item">
-            <Lock />
-            <Copy />
-            <Del />
+        <el-scrollbar class="scroll-wrap" height="100%">
+          <WorkspaceSize v-show="!editorStore.SelectMode" />
+          <WorkspaceBgColor v-show="!editorStore.SelectMode" />
+          <div class="config-item" v-if="editorStore.SelectMode === 'one'">
+            <h2 class="title">快捷操作</h2>
+            <div class="attr-item">
+              <Lock />
+              <Copy />
+              <Del />
+            </div>
           </div>
-        </div>
-        <AlignCenter />
-        <PositionAndSize />
-        <AttrColor />
-        <Attr />
-        <AttrShadow />
-        <AttrBorder />
+          <AlignCenter />
+          <PositionAndSize />
+          <AttrColor />
+          <Attr />
+          <AttrShadow />
+          <AttrBorder />
+        </el-scrollbar>
 
         <MenuSwitch target="configPanel" />
       </div>
@@ -131,7 +135,7 @@ onMounted(() => {
   canvasEvent.init(canvas)
 })
 
-const copms = [Template, Material, Element, Layer]
+const comps = [Template, Material, Element, Layer]
 const activeIndex = ref(0)
 const menus = ref([
   { name: '模板', icon: 'template' },
