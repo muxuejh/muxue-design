@@ -5,6 +5,7 @@ import AlignGuidLinePlugin from './plugin/AlignGuidLinePlugin'
 import ControlsPlugin from './plugin/ControlsPlugin'
 import CenterAlignPlugin from './plugin/CenterAlignPlugin'
 import DrawLinePlugin from './plugin/DrawLinePlugin'
+import PathTextPlugin from './plugin/PathTextPlugin'
 
 export {
   RulerPlugin,
@@ -12,7 +13,8 @@ export {
   AlignGuidLinePlugin,
   ControlsPlugin,
   CenterAlignPlugin,
-  DrawLinePlugin
+  DrawLinePlugin,
+  PathTextPlugin
 }
 
 export default Editor

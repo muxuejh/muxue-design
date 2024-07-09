@@ -107,7 +107,8 @@ import Editor, {
   AlignGuidLinePlugin,
   ControlsPlugin,
   CenterAlignPlugin,
-  DrawLinePlugin
+  DrawLinePlugin,
+  PathTextPlugin
 } from '@/core'
 
 const appStore = useAppStore()
@@ -132,6 +133,7 @@ onMounted(() => {
   canvasEditor.use(ControlsPlugin)
   canvasEditor.use(CenterAlignPlugin)
   canvasEditor.use(DrawLinePlugin)
+  canvasEditor.use(PathTextPlugin)
 
   // @ts-ignore
   canvasEditor.rulerEnable()
