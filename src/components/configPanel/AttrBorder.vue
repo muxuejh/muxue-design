@@ -4,9 +4,10 @@
     v-if="editorStore.selectMode === 'one' && editorStore.selectType !== 'group'"
   >
     <h2 class="title">边框</h2>
-    <div class="box">
+    <div class="attr-box">
       <div class="label">宽度</div>
       <el-slider
+        class="content"
         v-model="objectAttrs.strokeWidth"
         :min="1"
         :max="50"
@@ -16,16 +17,18 @@
         @input="(value: number) => setFabricObjectAttr('strokeWidth', value)"
       />
     </div>
-    <div class="box color-box">
+    <div class="attr-box">
       <div class="label">颜色</div>
       <ColorPicker
+        class="content"
         v-model:color="objectAttrs.stroke"
         @update:color="setFabricObjectAttr('stroke', $event)"
       />
     </div>
-    <div class="box">
+    <div class="attr-box">
       <div class="label">样式</div>
       <el-select
+        class="content"
         v-model="objectAttrs.strokeDashArray"
         placeholder="边框样式"
         style="width: 225px"
@@ -121,17 +124,4 @@ const changeBorder = (val: string) => {
 const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 </script>
 
-<style scoped lang="scss">
-.box {
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  &.color-box {
-    justify-content: flex-start;
-    .label {
-      width: 60px;
-    }
-  }
-}
-</style>
+<style scoped lang="scss"></style>

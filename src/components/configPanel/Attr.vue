@@ -1,8 +1,9 @@
 <template>
   <div class="config-item" v-if="editorStore.selectMode === 'one'">
-    <div class="box">
+    <div class="attr-box">
       <div class="label">旋转</div>
       <el-slider
+        class="content"
         v-model="objectAttrs.angle"
         :min="0"
         :max="360"
@@ -12,9 +13,10 @@
         @input="(value: Number) => setFabricObjectAttr('angle', value)"
       />
     </div>
-    <div class="box">
+    <div class="attr-box">
       <div class="label">透明</div>
       <el-slider
+        class="content"
         v-model="objectAttrs.opacity"
         :min="0"
         :max="1"
@@ -62,11 +64,4 @@ const handleChange = (activeObject: fabric.Object | undefined, key: any, value: 
 const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 </script>
 
-<style scoped lang="scss">
-.box {
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-</style>
+<style scoped lang="scss"></style>

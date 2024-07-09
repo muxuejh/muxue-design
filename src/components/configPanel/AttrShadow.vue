@@ -4,9 +4,10 @@
     v-if="editorStore.selectMode === 'one' && editorStore.selectType !== 'group'"
   >
     <h2 class="title">阴影</h2>
-    <div class="box">
+    <div class="attr-box">
       <div class="label">半径</div>
       <el-slider
+        class="content"
         v-model="objectAttrs.shadow.blur"
         :min="0"
         :max="10"
@@ -16,9 +17,10 @@
         @input="setFabricObjectAttr"
       />
     </div>
-    <div class="box">
+    <div class="attr-box">
       <div class="label">水平</div>
       <el-slider
+        class="content"
         v-model="objectAttrs.shadow.offsetX"
         :min="0"
         :max="10"
@@ -28,9 +30,10 @@
         @input="setFabricObjectAttr"
       />
     </div>
-    <div class="box">
+    <div class="attr-box">
       <div class="label">垂直</div>
       <el-slider
+        class="content"
         v-model="objectAttrs.shadow.offsetY"
         :min="0"
         :max="10"
@@ -40,9 +43,13 @@
         @input="setFabricObjectAttr"
       />
     </div>
-    <div class="box color-box">
+    <div class="attr-box">
       <div class="label">颜色</div>
-      <ColorPicker v-model:color="objectAttrs.shadow.color" @update:color="setFabricObjectAttr" />
+      <ColorPicker
+        class="content"
+        v-model:color="objectAttrs.shadow.color"
+        @update:color="setFabricObjectAttr"
+      />
     </div>
   </div>
 </template>
@@ -84,17 +91,4 @@ const handleChange = (activeObject: fabric.Object | undefined) => {
 const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 </script>
 
-<style scoped lang="scss">
-.box {
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  &.color-box {
-    justify-content: flex-start;
-    .label {
-      width: 60px;
-    }
-  }
-}
-</style>
+<style scoped lang="scss"></style>

@@ -1,20 +1,22 @@
 <template>
-  <el-popover placement="right" :width="320" trigger="click">
-    <template #default>
-      <ColorPanel
-        v-model:color="colorVal"
-        textColor="#000"
-        strawColor="#000"
-        @update:color="handleColorUpdate"
-      />
-    </template>
-    <template #reference>
-      <div class="color-picker" :style="{ width: props.width + 'px' }">
-        <div class="color-bar" :style="{ backgroundColor: colorVal }"></div>
-        <SvgIcon name="palette" />
-      </div>
-    </template>
-  </el-popover>
+  <div>
+    <el-popover placement="right" :width="320" trigger="click">
+      <template #default>
+        <ColorPanel
+          v-model:color="colorVal"
+          textColor="#000"
+          strawColor="#000"
+          @update:color="handleColorUpdate"
+        />
+      </template>
+      <template #reference>
+        <div class="color-picker" :style="{ width: props.width + 'px' }">
+          <div class="color-bar" :style="{ backgroundColor: colorVal }"></div>
+          <SvgIcon name="palette" />
+        </div>
+      </template>
+    </el-popover>
+  </div>
 </template>
 
 <script setup lang="ts">
