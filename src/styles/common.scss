@@ -26,5 +26,8 @@
     align-items: center;
     background: $sub-bg-color;
     cursor: pointer;
+    &.active {
+      background: #edf9ff;
+    }
   }
 }

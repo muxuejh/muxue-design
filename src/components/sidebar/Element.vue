@@ -179,6 +179,45 @@
         </svg>
       </div>
     </div>
+
+    <h2 class="title">文字</h2>
+    <div class="element-wrap">
+      <div class="element" @click="addText">
+        <svg
+          t="1650875455324"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="5401"
+          width="26"
+          height="26"
+        >
+          <path
+            d="M213.333333 209.92v128h85.333334v-42.666667h170.666666v433.493334H384.853333v85.333333h256v-85.333333H554.666667V295.253333h170.666666v42.666667h85.333334v-128H213.333333z"
+            p-id="5402"
+          ></path>
+        </svg>
+      </div>
+      <div class="element" @click="addVerticalText">
+        <svg
+          t="1720509148750"
+          class="icon"
+          viewBox="0 0 1385 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="15195"
+          width="26"
+          height="26"
+        >
+          <path
+            d="M926.422392 0.046429H467.722516v189.661155s59.846568-124.289575 140.833661-124.289575h223.151709v792.599462q0 74.873984-28.321494 102.530001c-18.896473 18.432186-102.53 63.452528-102.53 63.452528h451.132001s-83.571623-44.958438-102.53-63.452528-28.321494-52.61917-28.321495-102.530001V65.418009h223.198138c80.940664 0 140.833661 124.289575 140.833661 124.289575V0.046429zM245.886286 839.275761V0H129.133634v839.275761H0l187.50996 184.662334L375.01992 839.275761h-129.133634z"
+            fill=""
+            p-id="15196"
+          ></path>
+        </svg>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -352,6 +391,38 @@ const endDrawingLineMode = () => {
   state.lineType = ''
   canvasEditor.setMode(state.isDrawingLineMode)
   canvasEditor.setLineType(state.lineType)
+}
+
+const addText = () => {
+  const text = new fabric.IText('点击编辑文本', {
+    ...defaultPosition,
+    fontSize: 80,
+    fill: '#000000',
+    id: uuid()
+  })
+  canvasEditor.canvas.add(text)
+  canvasEditor.position('center', text)
+  canvasEditor.canvas.setActiveObject(text)
+  canvasEditor.canvas.renderAll()
+}
+
+const addVerticalText = () => {
+  const textbox = new fabric.Textbox('点击编辑文本', {
+    ...defaultPosition,
+    fontSize: 80,
+    fill: '#000000',
+    id: uuid(),
+    splitByGrapheme: true // 自动换行
+  })
+  textbox.setControlVisible('mt', false)
+  textbox.setControlVisible('mb', false)
+  textbox.setControlVisible('ml', false)
+  textbox.setControlVisible('mr', false)
+  textbox.setControlsVisibility({ mtr: false })
+  canvasEditor.canvas.add(textbox)
+  canvasEditor.position('center', textbox)
+  canvasEditor.canvas.setActiveObject(textbox)
+  canvasEditor.canvas.renderAll()
 }
 
 onMounted(() => {

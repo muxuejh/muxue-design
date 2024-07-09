@@ -16,6 +16,14 @@ export default function useCopy() {
         top: cloned.top! + 20,
         evented: true
       })
+      console.log('cloned', cloned)
+      if (cloned.type === 'textbox') {
+        cloned.setControlVisible('mt', false)
+        cloned.setControlVisible('mb', false)
+        cloned.setControlVisible('ml', false)
+        cloned.setControlVisible('mr', false)
+        cloned.setControlsVisibility({ mtr: false })
+      }
       canvasEditor.canvas.add(cloned)
       canvasEditor.canvas.setActiveObject(cloned)
       canvasEditor.canvas.renderAll()

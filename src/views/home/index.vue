@@ -59,6 +59,7 @@
           <AlignCenter />
           <PositionAndSize />
           <AttrColor />
+          <AttrText />
           <Attr />
           <AttrShadow />
           <AttrBorder />
@@ -95,6 +96,7 @@ import Del from '@/components/configPanel/Del.vue'
 import AlignCenter from '@/components/configPanel/AlignCenter.vue'
 import PositionAndSize from '@/components/configPanel/PositionAndSize.vue'
 import AttrColor from '@/components/configPanel/AttrColor.vue'
+import AttrText from '@/components/configPanel/AttrText.vue'
 import Attr from '@/components/configPanel/Attr.vue'
 import AttrShadow from '@/components/configPanel/AttrShadow.vue'
 import AttrBorder from '@/components/configPanel/AttrBorder.vue'

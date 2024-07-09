@@ -5,10 +5,11 @@ import { inject, onBeforeUnmount, onMounted } from 'vue'
 import CanvasEvent from '@/core/event'
 import useEditorStore from '@/stores/modules/editor'
 import { fabric } from 'fabric'
+import { fabricObject } from '@/types/fabric'
 
 export default function useFabricObjectAttr(
-  getAttributeCallback: (activeObject?: fabric.Object | undefined) => void,
-  setAttributeCallback: (activeObject?: fabric.Object | undefined, key?: any, value?: any) => void
+  getAttributeCallback: (activeObject?: fabricObject | undefined) => void,
+  setAttributeCallback: (activeObject?: fabricObject | undefined, key?: any, value?: any) => void
 ) {
   const editorStore = useEditorStore()
   const canvasEditor = editorStore.getCanvasEditor()!

@@ -1,13 +1,7 @@
 <template>
   <div
     class="config-item"
-    v-if="
-      editorStore.selectMode === 'one' &&
-      editorStore.selectType !== 'line' &&
-      editorStore.selectType !== 'thinTailArrow' &&
-      editorStore.selectType !== 'path' &&
-      editorStore.selectType !== 'group'
-    "
+    v-if="editorStore.selectMode === 'one' && !hideType.includes(editorStore.selectType)"
   >
     <h2 class="title">位置尺寸</h2>
     <div class="ipt-box">
@@ -48,6 +42,8 @@ import useEditorStore from '@/stores/modules/editor'
 import useFabricObjectAttr from '@/hooks/useFabricObjectAttr'
 
 const editorStore = useEditorStore()
+
+const hideType = ['line', 'thinTailArrow', 'path', 'group', 'i-text']
 
 const objectAttrs = reactive({
   left: 0,
