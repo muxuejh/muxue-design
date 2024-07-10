@@ -1,12 +1,7 @@
 <template>
   <div
     class="config-item"
-    v-if="
-      editorStore.selectMode === 'one' &&
-      editorStore.selectType !== 'line' &&
-      editorStore.selectType !== 'path' &&
-      editorStore.selectType !== 'group'
-    "
+    v-if="editorStore.selectMode === 'one' && !hideType.includes(editorStore.selectType)"
   >
     <h2 class="title">颜色</h2>
     <el-popover placement="right" :width="320" trigger="click">
@@ -33,6 +28,8 @@ import useEditorStore from '@/stores/modules/editor'
 import useFabricObjectAttr from '@/hooks/useFabricObjectAttr'
 
 const editorStore = useEditorStore()
+
+const hideType = ['line', 'path', 'group', 'image']
 
 const color = ref('#000000')
 

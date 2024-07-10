@@ -1,12 +1,20 @@
 <template>
   <div class="material">
-    <div class="img-wrap" v-for="(img, index) in imgList" :key="index">
+    <div
+      class="img-wrap"
+      v-for="(img, index) in imgList"
+      :key="index"
+      @click="useAddImage(img)"
+      @dragend="e => handleDrag(img, e)"
+    >
       <el-image :src="img" fit="contain" lazy />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import useAddImage from '@/hooks/useAddImage'
+import useCalcDrag from '@/hooks/useCalcDrag'
 import img01 from '@/assets/images/01.png'
 import img02 from '@/assets/images/02.png'
 import img03 from '@/assets/images/03.png'
@@ -24,6 +32,8 @@ import img14 from '@/assets/images/14.png'
 import img15 from '@/assets/images/15.png'
 import img16 from '@/assets/images/16.png'
 import img17 from '@/assets/images/17.png'
+
+const { isOutsideCanvas } = useCalcDrag()
 
 const imgList = [
   img01,
@@ -44,6 +54,11 @@ const imgList = [
   img16,
   img17
 ]
+
+const handleDrag = (img: string, e: DragEvent) => {
+  if (isOutsideCanvas(e.clientX, e.clientY)) return
+  useAddImage(img, { event: e })
+}
 </script>
 
 <style scoped lang="scss">

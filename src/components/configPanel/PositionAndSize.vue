@@ -62,7 +62,17 @@ const getObjectAttr = (activeObject: fabric.Object | undefined) => {
 }
 
 const handleChange = (activeObject: fabric.Object | undefined, key: any, value: number) => {
-  activeObject && activeObject.set(key, value)
+  if (activeObject) {
+    if (key === 'width') {
+      activeObject.set('scaleX', value / activeObject.width!)
+      return
+    }
+    if (key === 'height') {
+      activeObject.set('scaleY', value / activeObject.height!)
+      return
+    }
+    activeObject.set(key, value)
+  }
 }
 
 const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)

@@ -12,7 +12,7 @@ class WorkspacePlugin {
   public editor: IEditor
   static pluginName = 'WorkspacePlugin'
   static events = ['sizeChange']
-  static apis = ['big', 'small', 'auto', 'one', 'setSize']
+  static apis = ['big', 'small', 'auto', 'one', 'setSize', 'getWorkspace']
   workspaceEl: HTMLElement
   workspace: null | fabric.Rect
   option: any
@@ -89,6 +89,10 @@ class WorkspacePlugin {
 
     this.workspace = workspace
     this.auto()
+  }
+
+  getWorkspace() {
+    return this.canvas.getObjects().find((item: any) => item.id === 'workspace') as fabric.Rect
   }
 
   /**
