@@ -58,6 +58,7 @@
           </div>
           <AlignCenter />
           <PositionAndSize />
+          <Filter />
           <AttrColor />
           <AttrText />
           <Attr />
@@ -100,6 +101,7 @@ import AttrText from '@/components/configPanel/AttrText.vue'
 import Attr from '@/components/configPanel/Attr.vue'
 import AttrShadow from '@/components/configPanel/AttrShadow.vue'
 import AttrBorder from '@/components/configPanel/AttrBorder.vue'
+import Filter from '@/components/configPanel/Filter.vue'
 
 import Editor, {
   RulerPlugin,
