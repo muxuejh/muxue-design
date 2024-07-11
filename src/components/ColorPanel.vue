@@ -141,7 +141,7 @@ const alphaSliderRef = ref(null)
 
 let pointStyle = ref('top: 0;left: 0;')
 let hueSliderStyle = ref('left: 0;')
-let alphaSliderStyle = ref('left: calc(100% - 20px);')
+let alphaSliderStyle = ref('left: 0;')
 
 let hue = ref(0)
 let saturation = ref(1)
@@ -150,7 +150,7 @@ let value = ref(1)
 let red = ref(255)
 let green = ref(0)
 let blue = ref(0)
-let alpha = ref(1)
+let alpha = ref(0)
 
 onMounted(() => {
   if (props.color) {
@@ -189,6 +189,10 @@ watch([red, green, blue], newValue => {
   pointStyle.value = `top: ${100 - v * 100}%;left: ${s * 100}%;`
   // 移动色调滑块
   hueSliderStyle.value = `left: ${(hue.value / 360) * 100}%;`
+
+  if (alpha.value === 0) {
+    alpha.value = 1
+  }
 })
 
 watch(alpha, () => {

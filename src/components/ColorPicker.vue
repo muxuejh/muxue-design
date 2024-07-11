@@ -45,7 +45,7 @@ const colorVal = ref(props.color)
 watch(
   () => props.color,
   newColor => {
-    colorVal.value = newColor
+    colorVal.value = isColorTransparent(newColor) ? '' : newColor
   }
 )
 
@@ -53,6 +53,18 @@ const emit = defineEmits(['update:color'])
 const handleColorUpdate = (value: string) => {
   colorVal.value = value
   emit('update:color', colorVal.value)
+}
+
+function isColorTransparent(hexColor: string) {
+  // 确保是包含 Alpha 通道的颜色值
+  if (hexColor.length === 9 && hexColor.startsWith('#')) {
+    // 提取 Alpha 通道的值
+    const alpha = parseInt(hexColor.slice(-2), 16)
+    // 判断是否为完全透明
+    return alpha === 0
+  }
+  // 如果不是包含 Alpha 通道的颜色值，默认不是完全透明
+  return false
 }
 </script>
 
