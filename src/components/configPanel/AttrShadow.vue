@@ -76,9 +76,6 @@ const getObjectAttr = (activeObject: fabric.Object | undefined) => {
   if (activeObject) {
     // @ts-ignore
     objectAttrs.shadow = activeObject.get('shadow') || {}
-    if (!objectAttrs.shadow.color) {
-      objectAttrs.shadow.color = '#000000'
-    }
   }
 }
 

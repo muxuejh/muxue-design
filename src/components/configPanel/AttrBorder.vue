@@ -88,9 +88,6 @@ const getObjectAttr = (activeObject: fabric.Object | undefined) => {
     } else {
       objectAttrs.strokeWidth = activeObject.get('strokeWidth') as number
     }
-    if (!objectAttrs.stroke) {
-      objectAttrs.stroke = '#fff'
-    }
     const strokeDashArray = JSON.stringify(activeObject.get('strokeDashArray') || [])
     const target = strokeDashList.find(item => {
       return (

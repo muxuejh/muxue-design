@@ -64,9 +64,9 @@
       </div>
 
       <!-- 根据项目需要加的，可不要这一部分代码 -->
-      <span :style="{ color: textColor }" style="cursor: pointer" @click="presetChange('#F0F2F5')">
+      <!--  <span :style="{ color: textColor }" style="cursor: pointer" @click="presetChange('#F0F2F5')">
         恢复默认
-      </span>
+      </span> -->
     </div>
     <div class="preset-box">
       <span :style="{ color: textColor }">预设颜色</span>
@@ -139,7 +139,7 @@ const saturationValueRef = ref(null)
 const hueSliderRef = ref(null)
 const alphaSliderRef = ref(null)
 
-let pointStyle = ref('top: 25%;left: 80%;')
+let pointStyle = ref('top: 0;left: 0;')
 let hueSliderStyle = ref('left: 0;')
 let alphaSliderStyle = ref('left: calc(100% - 20px);')
 
@@ -150,15 +150,16 @@ let value = ref(1)
 let red = ref(255)
 let green = ref(0)
 let blue = ref(0)
-
 let alpha = ref(1)
 
 onMounted(() => {
-  let { r, g, b, a } = parseColor(props.color)
-  red.value = r
-  green.value = g
-  blue.value = b
-  alpha.value = a
+  if (props.color) {
+    let { r, g, b, a } = parseColor(props.color)
+    red.value = r
+    green.value = g
+    blue.value = b
+    alpha.value = a
+  }
 })
 
 const { open, sRGBHex, isSupported } = useEyeDropper()

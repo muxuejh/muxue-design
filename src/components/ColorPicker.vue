@@ -11,7 +11,11 @@
       </template>
       <template #reference>
         <div class="color-picker" :style="{ width: props.width + 'px' }">
-          <div class="color-bar" :style="{ backgroundColor: colorVal }"></div>
+          <div
+            class="color-bar"
+            :class="{ 'transparent-bg': !colorVal }"
+            :style="{ backgroundColor: colorVal }"
+          ></div>
           <SvgIcon name="palette" />
         </div>
       </template>
@@ -28,7 +32,7 @@ const props = defineProps({
   color: {
     type: String,
     default() {
-      return '#000'
+      return '#000000'
     }
   },
   width: {
