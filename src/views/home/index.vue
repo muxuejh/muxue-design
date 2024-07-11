@@ -25,7 +25,7 @@
 
         <div class="menu-content" :class="appStore.isMenuContentCollapse ? 'hidden' : ''">
           <el-scrollbar class="scroll-wrap" height="100%">
-            <KeepAlive>
+            <KeepAlive :exclude="['Layer']">
               <component v-show="!appStore.isMenuContentCollapse" :is="comps[activeIndex]" />
             </KeepAlive>
           </el-scrollbar>

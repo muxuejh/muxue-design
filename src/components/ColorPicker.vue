@@ -55,6 +55,10 @@ const handleColorUpdate = (value: string) => {
   emit('update:color', colorVal.value)
 }
 
+/**
+ * 判断颜色是否透明
+ * @param hexColor 如：#BA161600
+ */
 function isColorTransparent(hexColor: string) {
   // 确保是包含 Alpha 通道的颜色值
   if (hexColor.length === 9 && hexColor.startsWith('#')) {
