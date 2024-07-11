@@ -51,7 +51,7 @@ watch(
 
 const emit = defineEmits(['update:color'])
 const handleColorUpdate = (value: string) => {
-  colorVal.value = value
+  colorVal.value = isColorTransparent(value) ? '' : value
   emit('update:color', colorVal.value)
 }
 
