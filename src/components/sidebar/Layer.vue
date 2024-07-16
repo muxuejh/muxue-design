@@ -17,7 +17,14 @@
         >
           <div class="layer-item-content">
             <div class="left">
-              {{ layerName(item) }}
+              <SvgIcon
+                :name="
+                  item.type === 'image' ? 'image' : item.type.includes('text') ? 'text' : 'shape'
+                "
+                class="mt-0.5"
+              />
+              <span class="px-3">|</span>
+              <span class="truncate w-40">{{ layerName(item) }}</span>
             </div>
             <div class="right">
               <SvgIcon
@@ -180,6 +187,11 @@ onMounted(() => {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      .left {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       .right {
         display: flex;
         align-items: center;
