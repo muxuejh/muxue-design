@@ -484,8 +484,9 @@ onMounted(() => {
   margin-bottom: 25px;
   .element {
     flex: 1;
-    text-align: center;
     padding: 5px 0;
+    display: flex;
+    justify-content: center;
     background: $sub-bg-color;
     margin-left: 2px;
     cursor: pointer;

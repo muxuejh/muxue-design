@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        <div class="menu-content" :class="appStore.isMenuContentCollapse ? 'hidden' : ''">
+        <div class="menu-content" :class="appStore.isMenuContentCollapse ? 'hidden-sidebar' : ''">
           <el-scrollbar class="scroll-wrap" height="100%">
             <KeepAlive :exclude="['Layer']">
               <component v-show="!appStore.isMenuContentCollapse" :is="comps[activeIndex]" />
@@ -46,7 +46,10 @@
       </div>
 
       <!-- 属性区域 -->
-      <div class="config-panel-container" :class="appStore.isConfigPanelCollapse ? 'hidden' : ''">
+      <div
+        class="config-panel-container"
+        :class="appStore.isConfigPanelCollapse ? 'hidden-sidebar' : ''"
+      >
         <el-scrollbar class="scroll-wrap" height="100%">
           <WorkspaceSize v-show="!editorStore.selectMode" />
           <WorkspaceBgColor v-show="!editorStore.selectMode" />
