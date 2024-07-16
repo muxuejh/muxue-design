@@ -5,7 +5,8 @@ export default function useLayer() {
   const canvasEditor = editorStore.getCanvasEditor()
 
   const workspaceSendToBack = () => {
-    return canvasEditor?.canvas.getObjects().find(item => item.id === 'workspace')
+    const workspace = canvasEditor?.canvas.getObjects().find(item => item.id === 'workspace')
+    workspace && workspace.sendToBack()
   }
 
   const up = () => {

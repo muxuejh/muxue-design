@@ -12,6 +12,8 @@ const useEditorStore = defineStore('editor', () => {
 
   const selectMode = ref('') // 事件类型
   const selectType = ref('') // 选中元素的类型
+  const selectId = ref('') // 选中元素的id
+  const selectIds = ref<string[]>([]) // 选中元素的id集合
 
   const setCanvasEditor = (value: IEditor) => {
     editor.canvasEditor = value
@@ -35,6 +37,14 @@ const useEditorStore = defineStore('editor', () => {
     selectType.value = value
   }
 
+  const setSelectId = (value: string) => {
+    selectId.value = value
+  }
+
+  const setSelectIds = (value: string[]) => {
+    selectIds.value = value
+  }
+
   return {
     setCanvasEditor,
     getCanvasEditor,
@@ -42,8 +52,12 @@ const useEditorStore = defineStore('editor', () => {
     getActiveObjects,
     setEventType,
     setSelectType,
+    setSelectId,
+    setSelectIds,
     selectMode,
-    selectType
+    selectType,
+    selectId,
+    selectIds
   }
 })
 

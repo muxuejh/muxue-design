@@ -36,13 +36,19 @@ class CanvasEvent extends EventEmitter {
       this.editorStore.setEventType(SelectMode.ONE)
       this.emit(SelectEvent.ONE, activeObjects)
       this.editorStore.setSelectType(activeObjects[0].type!)
+      this.editorStore.setSelectId(activeObjects[0].id!)
+      this.editorStore.setSelectIds(activeObjects.map(item => item.id!))
     } else if (activeObjects && activeObjects.length > 1) {
       this.editorStore.setEventType(SelectMode.MULTIPLE)
       this.emit(SelectEvent.MULTIPLE, activeObjects)
+      this.editorStore.setSelectId('')
+      this.editorStore.setSelectIds(activeObjects.map(item => item.id!))
     } else {
       this.editorStore.setEventType(SelectMode.EMPTY)
       this.emit(SelectEvent.CANCEL, activeObjects)
       this.editorStore.setSelectType('')
+      this.editorStore.setSelectId('')
+      this.editorStore.setSelectIds([])
     }
 
     this.editorStore.setActiveObjects(activeObjects)

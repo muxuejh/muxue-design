@@ -40,42 +40,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, inject, onBeforeUnmount } from 'vue'
-import { fabric } from 'fabric'
-import useEditorStore from '@/stores/modules/editor'
-import CanvasEvent from '@/core/event'
+import useLock from '@/hooks/useLock'
 
-const editorStore = useEditorStore()
-const canvasEditor = editorStore.getCanvasEditor()!
-const canvasEvent = inject('canvasEvent') as CanvasEvent
-
-const isLock = ref(false)
-const doLock = (lock: boolean) => {
-  isLock.value = lock
-  const activeObject = editorStore.getActiveObjects()[0]
-  activeObject.hasControls = !lock // 是否显示控制点
-  activeObject.lockMovementX = lock
-  activeObject.lockMovementY = lock
-  activeObject.lockRotation = lock
-  activeObject.lockScalingX = lock
-  activeObject.lockScalingY = lock
-  activeObject.selectable = !lock
-  canvasEditor.canvas.renderAll()
-}
-
-const handleSelected = (e?: fabric.Object[]) => {
-  if (e && e[0]) {
-    isLock.value = e[0].hasControls ? false : true
-  }
-}
-
-onMounted(() => {
-  canvasEvent.on('selectOne', handleSelected)
-})
-
-onBeforeUnmount(() => {
-  canvasEvent.off('selectOne', handleSelected)
-})
+const { isLock, doLock } = useLock()
 </script>
 
 <style scoped></style>

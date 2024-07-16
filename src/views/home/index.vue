@@ -128,7 +128,8 @@ onMounted(() => {
   const canvas = new fabric.Canvas('canvasId', {
     fireRightClick: true, // 启用右键，button的数字为3
     stopContextMenu: true, // 禁止默认右键菜单
-    controlsAboveOverlay: true // 超出clipPath后仍然展示控制条
+    controlsAboveOverlay: true, // 超出clipPath后仍然展示控制条
+    preserveObjectStacking: true // 选中对象时保持对象原有层级
   })
   canvasEditor.init(canvas)
   canvasEditor.use(RulerPlugin)

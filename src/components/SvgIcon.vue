@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="svg-icon">
     <svg :style="{ width: width, height: height }">
       <use :xlink:href="prefix + name" :fill="color"></use>
     </svg>
@@ -32,3 +32,11 @@ defineProps({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.svg-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
