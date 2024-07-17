@@ -12,7 +12,7 @@ class WorkspacePlugin {
   public editor: IEditor
   static pluginName = 'WorkspacePlugin'
   static events = ['sizeChange']
-  static apis = ['big', 'small', 'auto', 'one', 'setSize', 'getWorkspace']
+  static apis = ['big', 'small', 'auto', 'one', 'setSize', 'getWorkspace', 'hookImportAfter']
   workspaceEl: HTMLElement
   workspace: null | fabric.Rect
   option: any
@@ -52,7 +52,7 @@ class WorkspacePlugin {
         workspace.set('selectable', false)
         workspace.set('hasControls', false)
         this.setSize(workspace.width as number, workspace.height as number)
-        this.editor.emit('sizeChange', workspace.width, workspace.height)
+        // this.editor.emit('sizeChange', workspace.width, workspace.height)
       }
       resolve('ok')
     })

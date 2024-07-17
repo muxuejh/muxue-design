@@ -1,3 +1,5 @@
+@import url('element-plus/dist/index.css');
+
 /* el-slider */
 .el-slider {
   width: 230px !important;
@@ -12,4 +14,9 @@
 }
 .el-slider__runway.show-input {
   margin: 7px !important;
+}
+
+/* ElMessageBox */
+.el-message-box {
+  top: -300px;
 }
