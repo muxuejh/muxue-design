@@ -46,14 +46,14 @@ watch(
   () => props.color,
   newColor => {
     if (newColor) {
-      colorVal.value = isColorTransparent(newColor) ? '' : newColor
+      colorVal.value = newColor
     }
   }
 )
 
 const emit = defineEmits(['update:color'])
 const handleColorUpdate = (value: string) => {
-  colorVal.value = isColorTransparent(value) ? '' : value
+  colorVal.value = value
   emit('update:color', colorVal.value)
 }
 

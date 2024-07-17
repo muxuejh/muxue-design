@@ -87,6 +87,8 @@
 import { useEyeDropper } from '@vueuse/core'
 import { ref, computed, watch, onMounted } from 'vue'
 import SvgIcon from '@/components/SvgIcon.vue'
+import { rgbaToHexWithAlpha, rgbaToHex } from '@/utils/parseColor'
+import { ElMessage } from 'element-plus'
 
 const props = defineProps({
   // 可以传16进制也可以传rgba
@@ -141,7 +143,7 @@ const alphaSliderRef = ref(null)
 
 let pointStyle = ref('top: 0;left: 0;')
 let hueSliderStyle = ref('left: 0;')
-let alphaSliderStyle = ref('left: 0;')
+let alphaSliderStyle = ref('left: calc(100% - 20px);')
 
 let hue = ref(0)
 let saturation = ref(1)
@@ -150,16 +152,56 @@ let value = ref(1)
 let red = ref(255)
 let green = ref(0)
 let blue = ref(0)
-let alpha = ref(0)
+let alpha = ref(1)
+
+watch(
+  () => props.color,
+  newColor => {
+    if (newColor) {
+      let color
+
+      if (props.color.includes('#')) {
+        color = props.color
+      } else if (props.color.includes('rgba')) {
+        color = rgbaToHexWithAlpha(props.color)
+      } else if (props.color.includes('rgb')) {
+        color = rgbaToHex(props.color)
+      } else {
+        ElMessage.error('颜色格式不正确')
+      }
+
+      let { r, g, b, a } = parseColor(color)
+
+      red.value = r
+      green.value = g
+      blue.value = b
+      alpha.value = a
+    }
+  },
+  { immediate: true }
+)
 
 onMounted(() => {
-  if (props.color) {
-    let { r, g, b, a } = parseColor(props.color)
+  /* if (props.color) {
+    let color
+
+    if (props.color.includes('#')) {
+      color = props.color
+    } else if (props.color.includes('rgba')) {
+      color = rgbaToHexWithAlpha(props.color)
+    } else if (props.color.includes('rgb')) {
+      color = rgbaToHex(props.color)
+    } else {
+      ElMessage.error('颜色格式不正确')
+    }
+
+    let { r, g, b, a } = parseColor(color)
+
     red.value = r
     green.value = g
     blue.value = b
     alpha.value = a
-  }
+  } */
 })
 
 const { open, sRGBHex, isSupported } = useEyeDropper()
@@ -177,7 +219,11 @@ watch(
 )
 
 watch([red, green, blue], newValue => {
-  emit('update:color', rgba2hex(red.value, green.value, blue.value, alpha.value))
+  if (alpha.value === 0) {
+    emit('update:color', `rgba(${red.value},${green.value},${blue.value},${alpha.value})`)
+  } else {
+    emit('update:color', rgba2hex(red.value, green.value, blue.value, alpha.value))
+  }
 
   let { h, s, v } = rgb2hsv(red.value, green.value, blue.value)
 
@@ -189,14 +235,14 @@ watch([red, green, blue], newValue => {
   pointStyle.value = `top: ${100 - v * 100}%;left: ${s * 100}%;`
   // 移动色调滑块
   hueSliderStyle.value = `left: ${(hue.value / 360) * 100}%;`
-
-  if (alpha.value === 0) {
-    alpha.value = 1
-  }
 })
 
 watch(alpha, () => {
-  emit('update:color', rgba2hex(red.value, green.value, blue.value, alpha.value))
+  if (alpha.value === 0) {
+    emit('update:color', `rgba(${red.value},${green.value},${blue.value},${alpha.value})`)
+  } else {
+    emit('update:color', rgba2hex(red.value, green.value, blue.value, alpha.value))
+  }
 
   // 移动透明度滑块
   alphaSliderStyle.value = `left: ${

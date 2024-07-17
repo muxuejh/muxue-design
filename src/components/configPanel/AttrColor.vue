@@ -50,6 +50,7 @@ const { setFabricObjectAttr } = useFabricObjectAttr(getObjectAttr, handleChange)
 .color-bar {
   width: 100%;
   height: 35px;
+  border: 1px solid #ccc;
   cursor: pointer;
 }
 </style>

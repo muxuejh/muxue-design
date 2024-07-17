@@ -1,6 +1,6 @@
 import useEditorStore from '@/stores/modules/editor'
 
-let json1 = {
+const json1 = {
   version: '5.3.0',
   objects: [
     {
@@ -414,7 +414,7 @@ let json1 = {
   background: '#F1F1F1'
 }
 
-let json2 = {
+const json2 = {
   version: '5.3.0',
   objects: [
     {
