@@ -48,7 +48,7 @@ const colorList = ref([
   '#000000',
   '#ffffff'
 ])
-const workspaceBgColor = ref('#ffffff')
+const workspaceBgColor = ref('#FFFFFF')
 
 const handleUpdateColor = (val: string) => {
   workspaceBgColor.value = val

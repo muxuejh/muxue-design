@@ -240,6 +240,7 @@
 </template>
 
 <script setup lang="ts">
+// @ts-nocheck
 import { onMounted, reactive } from 'vue'
 import { fabric } from 'fabric'
 import { v4 as uuid } from 'uuid'

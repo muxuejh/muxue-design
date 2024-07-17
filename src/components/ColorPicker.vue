@@ -45,7 +45,9 @@ const colorVal = ref(props.color)
 watch(
   () => props.color,
   newColor => {
-    colorVal.value = isColorTransparent(newColor) ? '' : newColor
+    if (newColor) {
+      colorVal.value = isColorTransparent(newColor) ? '' : newColor
+    }
   }
 )
 
