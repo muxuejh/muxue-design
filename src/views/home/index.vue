@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="header-container"></div>
+    <div class="header-container">
+      <Logo />
+    </div>
 
     <div class="main-container">
       <!-- 左侧菜单 -->
@@ -86,6 +88,8 @@ import CanvasEvent from '@/core/event'
 
 import SvgIcon from '@/components/SvgIcon.vue'
 import MenuSwitch from '@/components/MenuSwitch.vue'
+
+import Logo from '@/components/header/Logo.vue'
 
 import Template from '@/components/sidebar/Template.vue'
 import Material from '@/components/sidebar/Material.vue'

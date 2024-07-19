@@ -34,6 +34,7 @@ declare module 'vue' {
     Filter: typeof import('./src/components/configPanel/Filter.vue')['default']
     Layer: typeof import('./src/components/sidebar/Layer.vue')['default']
     Lock: typeof import('./src/components/configPanel/Lock.vue')['default']
+    Logo: typeof import('./src/components/header/Logo.vue')['default']
     Material: typeof import('./src/components/sidebar/Material.vue')['default']
     MenuSwitch: typeof import('./src/components/MenuSwitch.vue')['default']
     PositionAndSize: typeof import('./src/components/configPanel/PositionAndSize.vue')['default']

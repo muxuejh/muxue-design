@@ -18,5 +18,15 @@
 
 /* ElMessageBox */
 .el-message-box {
-  top: -300px;
+  top: -30%;
+  height: 180px;
+  border-radius: 10px;
+}
+.el-message-box__container {
+  height: 75px;
+}
+.el-message-box__btns {
+  .el-button {
+    border-radius: 5px;
+  }
 }

@@ -1,3 +1,6 @@
+/**
+ * 路径文字
+ */
 import { fabric } from 'fabric'
 import Editor from '../core'
 import { v4 as uuid } from 'uuid'

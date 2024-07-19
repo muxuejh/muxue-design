@@ -16,7 +16,7 @@ const imgList = [tempImg01, tempImg02]
 const { loadTemplate } = useFabricJson()
 
 const getTemplate = (index: number) => {
-  ElMessageBox.confirm('确定要导入模板到画布吗？', '温馨提示！', {
+  ElMessageBox.confirm('确定要导入模板到画布吗？会清空当前画布内容！', '温馨提示', {
     type: 'warning',
     confirmButtonText: '确定',
     cancelButtonText: '取消',
