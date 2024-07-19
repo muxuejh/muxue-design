@@ -177,7 +177,7 @@ onMounted(() => {
     border-radius: 5px;
     cursor: pointer;
     &.active:hover .layer-item-content .right {
-      opacity: 1;
+      visibility: visible;
     }
     &.active {
       background-color: #edf9ff;
@@ -195,7 +195,7 @@ onMounted(() => {
       .right {
         display: flex;
         align-items: center;
-        opacity: 0;
+        visibility: hidden;
         .icon {
           margin: 0 5px;
           box-sizing: border-box;
