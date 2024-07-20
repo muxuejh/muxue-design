@@ -57,7 +57,10 @@
     </div> -->
     <div class="color-value">
       <div style="display: flex">
-        <div style="margin-right: 8px; margin-top: 3px; cursor: pointer" @click="open">
+        <div
+          style="margin-right: 8px; margin-top: 3px; cursor: pointer"
+          @click="handleOpenEyeDropper"
+        >
           <SvgIcon name="straw" :color="strawColor" />
         </div>
         <div :style="{ color: textColor }">
@@ -214,6 +217,15 @@ onMounted(() => {
 })
 
 const { open, sRGBHex, isSupported } = useEyeDropper()
+//处理打开滴管时候按Esc按钮报错
+const handleOpenEyeDropper = () => {
+  ElMessage.success('请点击屏幕上的颜色，按Esc退出')
+  try {
+    open()
+  } catch (error) {
+    console.error('Error while opening EyeDropper:', error)
+  }
+}
 watch(
   () => sRGBHex.value,
   newVal => {
