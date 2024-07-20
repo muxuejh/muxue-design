@@ -13,7 +13,7 @@
         <div class="color-picker" :style="{ width: props.width + 'px' }">
           <div
             class="color-bar"
-            :class="{ 'transparent-bg': !colorVal }"
+            :class="{ 'transparent-bg': isColorTransparent }"
             :style="{ backgroundColor: colorVal }"
           ></div>
           <SvgIcon name="palette" />
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import ColorPanel from '@/components/ColorPanel.vue'
 import SvgIcon from '@/components/SvgIcon.vue'
 
@@ -45,9 +45,7 @@ const colorVal = ref(props.color)
 watch(
   () => props.color,
   newColor => {
-    if (newColor) {
-      colorVal.value = newColor
-    }
+    colorVal.value = newColor
   }
 )
 
@@ -57,21 +55,32 @@ const handleColorUpdate = (value: string) => {
   emit('update:color', colorVal.value)
 }
 
-/**
- * 判断颜色是否透明
- * @param hexColor 如：#BA161600
- */
-function isColorTransparent(hexColor: string) {
-  // 确保是包含 Alpha 通道的颜色值
-  if (hexColor.length === 9 && hexColor.startsWith('#')) {
-    // 提取 Alpha 通道的值
-    const alpha = parseInt(hexColor.slice(-2), 16)
-    // 判断是否为完全透明
-    return alpha === 0
+// 判断颜色是否为透明，或者没有颜色值
+const isColorTransparent = computed(() => {
+  if (!colorVal.value) return true
+
+  // 处理16进制颜色值
+  if (/^#([0-9A-Fa-f]{3}){1,2}$/.test(colorVal.value)) {
+    // 16进制颜色没有透明度概念，所以直接返回false
+    return false
   }
-  // 如果不是包含 Alpha 通道的颜色值，默认不是完全透明
-  return false
-}
+
+  // 处理RGB和RGBA颜色值
+  const match = colorVal.value.match(
+    /^rgba?\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})(\s*,\s*(\d{1}(?:\.\d+)?))?\)$/
+  )
+  if (!match) {
+    // 如果不匹配RGB或RGBA格式，则返回false或抛出错误
+    return false // 或者 throw new Error('Invalid colorVal.value format');
+  }
+
+  // 解析颜色值和透明度
+  const [, r, g, b, , a = '1'] = match // 如果没有透明度（即RGBA中的A），默认为1
+  const alpha = parseFloat(a)
+
+  // 判断透明度是否为0
+  return alpha === 0
+})
 </script>
 
 <style scoped lang="scss">

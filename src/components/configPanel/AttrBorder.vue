@@ -14,7 +14,7 @@
         :step="1"
         show-input
         :show-input-controls="false"
-        @input="(value: number) => setFabricObjectAttr('strokeWidth', value)"
+        @input="(value: number | number[]) => setFabricObjectAttr('strokeWidth', value)"
       />
     </div>
     <div class="attr-box">

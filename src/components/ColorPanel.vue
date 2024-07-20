@@ -19,9 +19,9 @@
           ></div>
         </div>
       </div>
-      <div class="color-diamond">
+      <!-- <div class="color-diamond">
         <div :style="`background-color: ${colorObj.rgba};width: 100%;height: 100%;`"></div>
-      </div>
+      </div> -->
     </div>
     <!-- <div class="color-value">
       <div class="hex">
@@ -57,10 +57,13 @@
     </div> -->
     <div class="color-value">
       <div style="display: flex">
-        <div style="margin-right: 5px; cursor: pointer" @click="open">
+        <div style="margin-right: 8px; margin-top: 3px; cursor: pointer" @click="open">
           <SvgIcon name="straw" :color="strawColor" />
         </div>
-        <span :style="{ color: textColor }">Hex &nbsp;&nbsp;&nbsp;{{ colorObj.hex8 }}</span>
+        <div :style="{ color: textColor }">
+          <span v-if="pointStyle !== 'top: -1px;left: -1px;'">{{ colorObj.rgba }}</span>
+          <span v-else style="color: #999">请选择颜色~</span>
+        </div>
       </div>
 
       <!-- 根据项目需要加的，可不要这一部分代码 -->
@@ -176,9 +179,15 @@ watch(
       green.value = g
       blue.value = b
       alpha.value = a
+    } else {
+      // red.value = 255
+      // green.value = 0
+      // blue.value = 0
+      alpha.value = 1
+      alphaSliderStyle.value = 'left: calc(100% - 20px);'
+      pointStyle.value = `top: -1px;left: -1px;`
     }
-  },
-  { immediate: true }
+  }
 )
 
 onMounted(() => {
@@ -238,6 +247,7 @@ watch([red, green, blue], newValue => {
 })
 
 watch(alpha, () => {
+  if (!props.color) return
   if (alpha.value === 0) {
     emit('update:color', `rgba(${red.value},${green.value},${blue.value},${alpha.value})`)
   } else {
@@ -254,7 +264,7 @@ let colorObj = computed(() => {
   let r = red.value
   let g = green.value
   let b = blue.value
-  let a = alpha.value
+  let a = parseFloat(alpha.value.toFixed(2))
   let h = hue.value
   let s = saturation.value
   let v = value.value
