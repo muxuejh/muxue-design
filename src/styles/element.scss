@@ -30,3 +30,7 @@
     border-radius: 5px;
   }
 }
+
+.el-tooltip__trigger:focus-visible {
+  outline: unset;
+}

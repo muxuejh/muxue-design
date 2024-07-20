@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mr-1">
     <el-dropdown @command="handleCommand">
       <el-button type="primary">
         下载
@@ -17,14 +17,19 @@
 </template>
 
 <script setup lang="ts">
+import { ElMessage } from 'element-plus'
 import { ArrowDown } from '@element-plus/icons-vue'
 import { useSave } from '@/hooks/useSave'
 
-const { saveImg, saveSvg } = useSave()
+const { saveImg, saveSvg, saveJson, isEmptyWorkspace } = useSave()
 
 const handleCommand = (command: string | number | object) => {
+  if (isEmptyWorkspace()) {
+    return ElMessage.warning('画布内容为空！')
+  }
   if (command === 'saveImg') saveImg()
   if (command === 'saveSvg') saveSvg()
+  if (command === 'saveJson') saveJson()
 }
 </script>
 
