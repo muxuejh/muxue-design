@@ -1,10 +1,10 @@
 <template>
   <div class="mr-1">
     <el-dropdown @command="handleCommand">
-      <el-button type="primary">
+      <div class="text-black text-base bg-gray-200 px-5 py-1 rounded-sm">
         下载
-        <el-icon class="el-icon--right"><arrow-down /></el-icon>
-      </el-button>
+        <el-icon><arrow-down /></el-icon>
+      </div>
       <template #dropdown>
         <el-dropdown-menu>
           <el-dropdown-item command="saveImg">PNG图片</el-dropdown-item>
@@ -25,7 +25,7 @@ const { saveImg, saveSvg, saveJson, isEmptyWorkspace } = useSave()
 
 const handleCommand = (command: string | number | object) => {
   if (isEmptyWorkspace()) {
-    return ElMessage.warning('画布内容为空！')
+    return ElMessage.warning('画布内容为空~')
   }
   if (command === 'saveImg') saveImg()
   if (command === 'saveSvg') saveSvg()

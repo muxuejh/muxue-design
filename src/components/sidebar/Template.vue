@@ -7,6 +7,7 @@
 </template>
 
 <script setup lang="ts">
+import { ElMessageBox } from 'element-plus'
 import { useFabricJson } from '@/hooks/useFabricJson'
 import tempImg01 from '@/assets/images/tempImg01.png'
 import tempImg02 from '@/assets/images/tempImg02.png'

@@ -12,7 +12,16 @@ class WorkspacePlugin {
   public editor: IEditor
   static pluginName = 'WorkspacePlugin'
   static events = ['sizeChange']
-  static apis = ['big', 'small', 'auto', 'one', 'setSize', 'getWorkspace', 'hookImportAfter']
+  static apis = [
+    'big',
+    'small',
+    'auto',
+    'one',
+    'setSize',
+    'setWorkspaceBgColor',
+    'getWorkspace',
+    'hookImportAfter'
+  ]
   workspaceEl: HTMLElement
   workspace: null | fabric.Rect
   option: any
@@ -190,6 +199,11 @@ class WorkspacePlugin {
   one() {
     this.setZoomAuto(0.8 - 0.08)
     this.canvas.requestRenderAll()
+  }
+
+  setWorkspaceBgColor(color: string) {
+    const workspace = this.canvas.getObjects().find(item => item.id === 'workspace') as fabric.Rect
+    workspace?.set('fill', color)
   }
 
   _bindWheel() {

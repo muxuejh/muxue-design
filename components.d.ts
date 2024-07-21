@@ -44,6 +44,7 @@ declare module 'vue' {
     Save: typeof import('./src/components/header/Save.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
     Template: typeof import('./src/components/sidebar/Template.vue')['default']
+    Tool: typeof import('./src/components/header/Tool.vue')['default']
     WorkspaceBgColor: typeof import('./src/components/configPanel/WorkspaceBgColor.vue')['default']
     WorkspaceSize: typeof import('./src/components/configPanel/WorkspaceSize.vue')['default']
     Zoom: typeof import('./src/components/Zoom.vue')['default']

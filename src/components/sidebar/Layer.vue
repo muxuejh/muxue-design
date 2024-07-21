@@ -146,11 +146,13 @@ onMounted(() => {
   justify-content: space-around;
   margin-bottom: 25px;
   .btn {
-    flex: 1;
-    text-align: center;
-    padding: 5px 0;
-    background: $sub-bg-color;
     margin-left: 2px;
+    padding: 6px 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $sub-bg-color;
     cursor: pointer;
     &:hover {
       background: #edf9ff;

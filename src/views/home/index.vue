@@ -2,6 +2,7 @@
   <div>
     <div class="header-container">
       <Logo />
+      <Tool />
       <Save />
     </div>
 
@@ -91,6 +92,7 @@ import SvgIcon from '@/components/SvgIcon.vue'
 import MenuSwitch from '@/components/MenuSwitch.vue'
 
 import Logo from '@/components/header/Logo.vue'
+import Tool from '@/components/header/Tool.vue'
 import Save from '@/components/header/Save.vue'
 
 import Template from '@/components/sidebar/Template.vue'
