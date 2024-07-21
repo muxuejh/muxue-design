@@ -1,5 +1,11 @@
 <template>
-  <div class="flex-1 mx-32 flex items-center justify-center gap-4">
+  <div class="flex-1 mx-32 flex items-center justify-center gap-6">
+    <div class="tool">
+      <SvgIcon name="undo" color="#999" />
+    </div>
+    <div class="tool">
+      <SvgIcon name="redo" color="#999" />
+    </div>
     <div @click="handleClear" class="tool">
       <SvgIcon name="brush" />
     </div>
