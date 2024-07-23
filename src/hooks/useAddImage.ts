@@ -17,9 +17,9 @@ export default function useAddImage(imageUrl: string, options?: { event: DragEve
       })
       img.scaleToWidth(getWorkspaceWidth() / 2) // 将对象缩放到指定的宽度，这里设置成画布宽度的一半
       event && handleEvent(img, event) // 拖拽
-      canvasEditor.canvas.add(img)
       // @ts-ignore
       !event && canvasEditor.position('center', img)
+      canvasEditor.canvas.add(img)
       canvasEditor.canvas.setActiveObject(img)
       canvasEditor.canvas.renderAll()
     },

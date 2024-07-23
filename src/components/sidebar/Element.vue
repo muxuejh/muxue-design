@@ -272,10 +272,10 @@ const addRect = (option?: fabric.IRectOptions) => {
     id: uuid(),
     name: '矩形'
   })
-  canvasEditor.canvas.add(rect)
   if (!option) {
     canvasEditor.position('center', rect)
   }
+  canvasEditor.canvas.add(rect)
   canvasEditor.canvas.setActiveObject(rect)
   canvasEditor.canvas.renderAll()
 }
@@ -289,10 +289,10 @@ const addCircle = (option?: fabric.ICircleOptions) => {
     id: uuid(),
     name: '圆形'
   })
-  canvasEditor.canvas.add(circle)
   if (!option) {
     canvasEditor.position('center', circle)
   }
+  canvasEditor.canvas.add(circle)
   canvasEditor.canvas.setActiveObject(circle)
   canvasEditor.canvas.renderAll()
 }
@@ -307,10 +307,10 @@ const addTriangle = (option?: fabric.ITriangleOptions) => {
     id: uuid(),
     name: '三角形'
   })
-  canvasEditor.canvas.add(triangle)
   if (!option) {
     canvasEditor.position('center', triangle)
   }
+  canvasEditor.canvas.add(triangle)
   canvasEditor.canvas.setActiveObject(triangle)
   canvasEditor.canvas.renderAll()
 }
@@ -333,10 +333,10 @@ const addPolygon = (option?: fabric.IPolylineOptions) => {
       y: 0
     }
   })
-  canvasEditor.canvas.add(polygon)
   if (!option) {
     canvasEditor.position('center', polygon)
   }
+  canvasEditor.canvas.add(polygon)
   canvasEditor.canvas.setActiveObject(polygon)
   canvasEditor.canvas.renderAll()
 }
@@ -419,8 +419,8 @@ const addText = () => {
     fill: '#000000',
     id: uuid()
   })
-  canvasEditor.canvas.add(text)
   canvasEditor.position('center', text)
+  canvasEditor.canvas.add(text)
   canvasEditor.canvas.setActiveObject(text)
   canvasEditor.canvas.renderAll()
 }
@@ -438,8 +438,8 @@ const addVerticalText = () => {
   textbox.setControlVisible('ml', false)
   textbox.setControlVisible('mr', false)
   textbox.setControlsVisibility({ mtr: false })
-  canvasEditor.canvas.add(textbox)
   canvasEditor.position('center', textbox)
+  canvasEditor.canvas.add(textbox)
   canvasEditor.canvas.setActiveObject(textbox)
   canvasEditor.canvas.renderAll()
 }

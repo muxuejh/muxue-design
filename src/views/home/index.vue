@@ -123,7 +123,8 @@ import Editor, {
   ControlsPlugin,
   CenterAlignPlugin,
   DrawLinePlugin,
-  PathTextPlugin
+  PathTextPlugin,
+  HistoryPlugin
 } from '@/core'
 
 const appStore = useAppStore()
@@ -150,6 +151,8 @@ onMounted(() => {
   canvasEditor.use(CenterAlignPlugin)
   canvasEditor.use(DrawLinePlugin)
   canvasEditor.use(PathTextPlugin)
+  // @ts-ignore
+  canvasEditor.use(HistoryPlugin)
 
   // @ts-ignore
   canvasEditor.rulerEnable()

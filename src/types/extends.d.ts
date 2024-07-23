@@ -3,6 +3,8 @@ declare namespace fabric {
     contextTop: CanvasRenderingContext2D
     lowerCanvasEl: HTMLElement
     _currentTransform: unknown
+    clearUndo(): void
+    _historyNext(): void
     _centerObject: (obj: fabric.Object, center: fabric.Point) => fabric.Canvas
   }
 

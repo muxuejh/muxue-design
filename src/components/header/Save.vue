@@ -1,7 +1,7 @@
 <template>
   <div class="mr-1">
     <el-dropdown @command="handleCommand">
-      <div class="text-black text-base bg-gray-200 px-5 py-1 rounded-sm">
+      <div class="text-black text-base bg-gray-200 px-5 py-1 rounded-sm select-none">
         下载
         <el-icon><arrow-down /></el-icon>
       </div>

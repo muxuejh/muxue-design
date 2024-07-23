@@ -8,6 +8,8 @@ import { Canvas } from 'fabric/fabric-impl'
 import useEditorStore from '@/stores/modules/editor'
 import { SelectMode, SelectEvent } from './type'
 
+const event = new EventEmitter()
+
 // const editorStore = useEditorStore()
 
 class CanvasEvent extends EventEmitter {
@@ -56,3 +58,4 @@ class CanvasEvent extends EventEmitter {
 }
 
 export default CanvasEvent
+export { event }
