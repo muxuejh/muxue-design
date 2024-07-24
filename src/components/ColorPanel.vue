@@ -64,7 +64,7 @@
           <SvgIcon name="straw" :color="strawColor" />
         </div>
         <div :style="{ color: textColor }">
-          <span v-if="pointStyle !== 'top: -1px;left: -1px;'">{{ colorObj.rgba }}</span>
+          <span v-if="pointStyle !== 'top: 0;left: 0;'">{{ colorObj.rgba }}</span>
           <span v-else style="color: #999">请选择颜色~</span>
         </div>
       </div>
@@ -183,18 +183,18 @@ watch(
       blue.value = b
       alpha.value = a
     } else {
-      // red.value = 255
-      // green.value = 0
-      // blue.value = 0
+      red.value = null
+      green.value = null
+      blue.value = null
       alpha.value = 1
       alphaSliderStyle.value = 'left: calc(100% - 20px);'
-      pointStyle.value = `top: -1px;left: -1px;`
+      pointStyle.value = `top: 0;left: 0;`
     }
   }
 )
 
 onMounted(() => {
-  /* if (props.color) {
+  if (props.color) {
     let color
 
     if (props.color.includes('#')) {
@@ -213,7 +213,7 @@ onMounted(() => {
     green.value = g
     blue.value = b
     alpha.value = a
-  } */
+  }
 })
 
 const { open, sRGBHex, isSupported } = useEyeDropper()
@@ -240,6 +240,7 @@ watch(
 )
 
 watch([red, green, blue], newValue => {
+  if (newValue[0] == null || newValue[1] == null || newValue[2] == null) return
   if (alpha.value === 0) {
     emit('update:color', `rgba(${red.value},${green.value},${blue.value},${alpha.value})`)
   } else {
