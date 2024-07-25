@@ -1,5 +1,5 @@
 <template>
-  <div v-if="editorStore.selectType === 'image'">
+  <div v-if="editorStore.selectMode === 'one' && editorStore.selectType === 'image'">
     <!-- <h2 class="title">图片滤镜</h2> -->
     <el-collapse style="margin-bottom: 25px">
       <el-collapse-item>

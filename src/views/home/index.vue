@@ -66,6 +66,7 @@
             </div>
           </div>
           <AlignCenter />
+          <ReplaceImg />
           <PositionAndSize />
           <Filter />
           <AttrColor />
@@ -108,6 +109,7 @@ import Lock from '@/components/configPanel/Lock.vue'
 import Copy from '@/components/configPanel/Copy.vue'
 import Del from '@/components/configPanel/Del.vue'
 import AlignCenter from '@/components/configPanel/AlignCenter.vue'
+import ReplaceImg from '@/components/configPanel/ReplaceImg.vue'
 import PositionAndSize from '@/components/configPanel/PositionAndSize.vue'
 import AttrColor from '@/components/configPanel/AttrColor.vue'
 import AttrText from '@/components/configPanel/AttrText.vue'

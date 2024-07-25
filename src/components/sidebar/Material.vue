@@ -2,9 +2,9 @@
   <div class="material">
     <div
       class="img-wrap"
-      v-for="(img, index) in imgList"
+      v-for="(img, index) in dataStore.MaterialList"
       :key="index"
-      @click="useAddImage(img)"
+      @click="addImage(img)"
       @dragend="e => handleDrag(img, e)"
     >
       <el-image :src="img" fit="contain" lazy />
@@ -13,51 +13,17 @@
 </template>
 
 <script setup lang="ts">
+import useDataStore from '@/stores/modules/data'
 import useAddImage from '@/hooks/useAddImage'
 import useCalcDrag from '@/hooks/useCalcDrag'
-import img01 from '@/assets/images/01.png'
-import img02 from '@/assets/images/02.png'
-import img03 from '@/assets/images/03.png'
-import img04 from '@/assets/images/04.png'
-import img05 from '@/assets/images/05.png'
-import img06 from '@/assets/images/06.png'
-import img07 from '@/assets/images/07.png'
-import img08 from '@/assets/images/08.png'
-import img09 from '@/assets/images/09.png'
-import img10 from '@/assets/images/10.png'
-import img11 from '@/assets/images/11.png'
-import img12 from '@/assets/images/12.png'
-import img13 from '@/assets/images/13.png'
-import img14 from '@/assets/images/14.png'
-import img15 from '@/assets/images/15.png'
-import img16 from '@/assets/images/16.png'
-import img17 from '@/assets/images/17.png'
 
+const dataStore = useDataStore()
 const { isOutsideCanvas } = useCalcDrag()
-
-const imgList = [
-  img01,
-  img02,
-  img03,
-  img04,
-  img05,
-  img06,
-  img07,
-  img08,
-  img09,
-  img10,
-  img11,
-  img12,
-  img13,
-  img14,
-  img15,
-  img16,
-  img17
-]
+const { addImage } = useAddImage()
 
 const handleDrag = (img: string, e: DragEvent) => {
   if (isOutsideCanvas(e.clientX, e.clientY)) return
-  useAddImage(img, { event: e })
+  addImage(img, { event: e })
 }
 </script>
 
