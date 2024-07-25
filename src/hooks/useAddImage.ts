@@ -29,21 +29,18 @@ export default function useAddImage() {
   }
 
   const replaceImage = async (imageUrl: string) => {
-    return new Promise(async resolve => {
-      const activeObject = canvasEditor.canvas.getActiveObject() as fabric.Image
-      const imgElement = await getImageElement(imageUrl)
-      const width = activeObject.get('width')!
-      const height = activeObject.get('height')!
-      const scaleX = activeObject.get('scaleX')!
-      const scaleY = activeObject.get('scaleY')!
-      activeObject.setSrc(imageUrl, () => {
-        activeObject.set('scaleX', (width * scaleX) / imgElement.width)
-        activeObject.set('scaleY', (height * scaleY) / imgElement.height)
-        canvasEditor.canvas.renderAll()
-      })
-      imgElement.remove()
-      resolve('success')
+    const imgElement = await getImageElement(imageUrl)
+    const activeObject = canvasEditor.canvas.getActiveObject() as fabric.Image
+    const width = activeObject.get('width')!
+    const height = activeObject.get('height')!
+    const scaleX = activeObject.get('scaleX')!
+    const scaleY = activeObject.get('scaleY')!
+    activeObject.setSrc(imageUrl, () => {
+      activeObject.set('scaleX', (width * scaleX) / imgElement.width)
+      activeObject.set('scaleY', (height * scaleY) / imgElement.height)
+      canvasEditor.canvas.renderAll()
     })
+    imgElement.remove()
   }
 
   function getWorkspaceWidth() {

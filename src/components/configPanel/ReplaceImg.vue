@@ -1,7 +1,7 @@
 <template>
   <div v-if="editorStore.selectMode === 'one' && editorStore.selectType === 'image'">
     <el-button
-      class="w-full h-10 mb-6 border-none bg-gray-200 rounded-lg text-gray-800"
+      class="w-full h-10 mb-6 border-none bg-gray-200 rounded-md text-gray-800"
       @click="dialogVisible = true"
     >
       替换图片
@@ -23,7 +23,7 @@
                   v-for="(item, index) in dataStore.MaterialList"
                   :key="index"
                   @click="handleReplace(item)"
-                  class="w-36 h-36 p-2 bg-slate-50 rounded-lg cursor-pointer"
+                  class="p-3 bg-slate-50 rounded-lg cursor-pointer"
                 >
                   <el-image :src="item" alt="" fit="contain" lazy class="w-full h-full" />
                 </div>
@@ -52,6 +52,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { ElMessage } from 'element-plus'
 import { CloseBold, UploadFilled } from '@element-plus/icons-vue'
 import useDataStore from '@/stores/modules/data'
 import useEditorStore from '@/stores/modules/editor'

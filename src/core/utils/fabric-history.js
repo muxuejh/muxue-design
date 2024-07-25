@@ -105,7 +105,7 @@ fabric.Canvas.prototype.undo = function (callback) {
   // console.log('this.historyUndo', this.historyUndo)
   const history = this.historyUndo.pop()
   // console.log('history', history.objects)
-  const isFlag = history.objects.length === 1 && history.objects[0].id === 'workspace'
+  // const isFlag = history.objects.length === 1 && history.objects[0].id === 'workspace'
   if (history) {
     // if (isFlag) return
     // Push the current state to the redo history
@@ -138,7 +138,7 @@ fabric.Canvas.prototype.redo = function (callback) {
 }
 
 fabric.Canvas.prototype._loadHistory = function (history, event, callback) {
-  var that = this
+  let that = this
 
   this.loadFromJSON(history, function () {
     that.renderAll()
