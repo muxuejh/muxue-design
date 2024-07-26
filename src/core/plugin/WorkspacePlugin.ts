@@ -4,6 +4,7 @@
 
 import { fabric } from 'fabric'
 import Editor from '../core'
+import { event } from '../event/index.js'
 import { throttle } from 'lodash-es'
 type IEditor = Editor
 
@@ -61,7 +62,7 @@ class WorkspacePlugin {
         workspace.set('selectable', false)
         workspace.set('hasControls', false)
         this.setSize(workspace.width as number, workspace.height as number)
-        // this.editor.emit('sizeChange', workspace.width, workspace.height)
+        event.emit('sizeChange', workspace.width, workspace.height)
       }
       resolve('ok')
     })

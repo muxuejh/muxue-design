@@ -11,8 +11,10 @@ import { ElMessageBox } from 'element-plus'
 import { useFabricJson } from '@/hooks/useFabricJson'
 import tempImg01 from '@/assets/images/tempImg01.png'
 import tempImg02 from '@/assets/images/tempImg02.png'
+import tempImg03 from '@/assets/images/tempImg03.png'
+import tempImg04 from '@/assets/images/tempImg04.png'
 
-const imgList = [tempImg01, tempImg02]
+const imgList = [tempImg01, tempImg02, tempImg03, tempImg04]
 
 const { loadTemplate } = useFabricJson()
 
@@ -39,6 +41,7 @@ const getTemplate = (index: number) => {
     width: 50%;
     height: 180px;
     padding: 5px;
+    margin-bottom: 5px;
     cursor: pointer;
     .el-image {
       width: 100%;

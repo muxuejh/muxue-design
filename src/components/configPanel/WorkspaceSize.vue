@@ -14,7 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import { event } from '@/core/event/index'
 import useEditorStore from '@/stores/modules/editor'
 
 const editorStore = useEditorStore()
@@ -28,6 +29,13 @@ const setSize = () => {
   // @ts-ignore
   canvasEditor.setSize(width.value, height.value)
 }
+
+onMounted(() => {
+  event.on('sizeChange', (w, h) => {
+    width.value = w
+    height.value = h
+  })
+})
 </script>
 
 <style scoped lang="scss">

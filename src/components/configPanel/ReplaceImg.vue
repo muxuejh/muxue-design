@@ -105,6 +105,9 @@ const beforeUpload = (rawFile: any) => {
 :deep(.el-tabs__header) {
   margin-right: 0;
   padding-right: 0;
+  &.is-left {
+    padding-top: 40px !important;
+  }
 }
 :deep(.el-tabs__content) {
   background: #fff;
@@ -140,6 +143,7 @@ const beforeUpload = (rawFile: any) => {
   display: none;
 }
 
+// el-upload
 :deep(.el-upload-dragger) {
   padding: 70px 10px;
 }
