@@ -7,6 +7,7 @@ import CenterAlignPlugin from './plugin/CenterAlignPlugin'
 import DrawLinePlugin from './plugin/DrawLinePlugin'
 import PathTextPlugin from './plugin/PathTextPlugin'
 import HistoryPlugin from './plugin/HistoryPlugin'
+import ContextMenuPlugin from './plugin/ContextMenuPlugin'
 
 export {
   RulerPlugin,
@@ -16,7 +17,8 @@ export {
   CenterAlignPlugin,
   DrawLinePlugin,
   PathTextPlugin,
-  HistoryPlugin
+  HistoryPlugin,
+  ContextMenuPlugin
 }
 
 export default Editor

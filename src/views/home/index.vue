@@ -40,6 +40,7 @@
 
       <!-- 画布区域 -->
       <div class="canvas-editor-container">
+        <ContextMenu />
         <div id="workspace">
           <div class="canvas-wrap">
             <div class="inside-shadow"></div>
@@ -91,6 +92,7 @@ import CanvasEvent from '@/core/event'
 
 import SvgIcon from '@/components/SvgIcon.vue'
 import MenuSwitch from '@/components/MenuSwitch.vue'
+import ContextMenu from '@/components/ContextMenu.vue'
 
 import Logo from '@/components/header/Logo.vue'
 import Tool from '@/components/header/Tool.vue'
@@ -126,7 +128,8 @@ import Editor, {
   CenterAlignPlugin,
   DrawLinePlugin,
   PathTextPlugin,
-  HistoryPlugin
+  HistoryPlugin,
+  ContextMenuPlugin
 } from '@/core'
 
 const appStore = useAppStore()
@@ -155,6 +158,7 @@ onMounted(() => {
   canvasEditor.use(PathTextPlugin)
   // @ts-ignore
   canvasEditor.use(HistoryPlugin)
+  canvasEditor.use(ContextMenuPlugin)
 
   // @ts-ignore
   canvasEditor.rulerEnable()

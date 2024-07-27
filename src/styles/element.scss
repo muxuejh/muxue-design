@@ -35,3 +35,8 @@
 .el-tooltip__trigger:focus-visible {
   outline: unset;
 }
+
+/* el-popover */
+.el-popover.el-popper {
+  padding: 0;
+}

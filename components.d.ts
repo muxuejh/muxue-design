@@ -15,6 +15,7 @@ declare module 'vue' {
     AttrText: typeof import('./src/components/configPanel/AttrText.vue')['default']
     ColorPanel: typeof import('./src/components/ColorPanel.vue')['default']
     ColorPicker: typeof import('./src/components/ColorPicker.vue')['default']
+    ContextMenu: typeof import('./src/components/ContextMenu.vue')['default']
     Copy: typeof import('./src/components/configPanel/Copy.vue')['default']
     Del: typeof import('./src/components/configPanel/Del.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']

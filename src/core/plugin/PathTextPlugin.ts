@@ -15,7 +15,7 @@ type DrawOptions = {
   defaultFontSize: number
 }
 
-export default class PathTextPlugin implements IPluginTempl {
+class PathTextPlugin implements IPluginTempl {
   static pluginName = 'PathTextPlugin'
   static apis = ['startTextPathDraw', 'endTextPathDraw']
   private options?: DrawOptions
@@ -82,3 +82,5 @@ export default class PathTextPlugin implements IPluginTempl {
     this._unbindEvent()
   }
 }
+
+export default PathTextPlugin
