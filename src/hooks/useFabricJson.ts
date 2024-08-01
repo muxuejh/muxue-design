@@ -1,4 +1,5 @@
 import useEditorStore from '@/stores/modules/editor'
+import { showFullScreenLoading, hideFullScreenLoading } from '@/config/serviceLoading'
 
 const json1 = {
   version: '5.3.0',
@@ -2453,6 +2454,7 @@ export function useFabricJson() {
   const canvasEditor = editorStore.getCanvasEditor()!
 
   const loadTemplate = (index: number) => {
+    showFullScreenLoading()
     let templateJson
     if (index === 0) {
       templateJson = json1
@@ -2468,6 +2470,7 @@ export function useFabricJson() {
       // @ts-ignore
       canvasEditor.hookImportAfter().then(() => {
         canvasEditor.canvas.renderAll()
+        hideFullScreenLoading()
       })
     })
   }

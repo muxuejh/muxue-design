@@ -2,12 +2,14 @@ import { fabric } from 'fabric'
 import { v4 as uuid } from 'uuid'
 import useEditorStore from '@/stores/modules/editor'
 import useCalcDrag from './useCalcDrag'
+import { showFullScreenLoading, hideFullScreenLoading } from '@/config/serviceLoading'
 
 export default function useAddImage() {
   const editorStore = useEditorStore()
   const canvasEditor = editorStore.getCanvasEditor()!
 
   const addImage = (imageUrl: string, options?: { event: DragEvent }) => {
+    showFullScreenLoading()
     const { event = false } = options || {}
 
     fabric.Image.fromURL(
@@ -23,12 +25,14 @@ export default function useAddImage() {
         canvasEditor.canvas.add(img)
         canvasEditor.canvas.setActiveObject(img)
         canvasEditor.canvas.renderAll()
+        hideFullScreenLoading()
       },
       { crossOrigin: 'anonymous' }
     )
   }
 
   const replaceImage = async (imageUrl: string) => {
+    showFullScreenLoading()
     const imgElement = await getImageElement(imageUrl)
     const activeObject = canvasEditor.canvas.getActiveObject() as fabric.Image
     const width = activeObject.get('width')!
@@ -41,6 +45,7 @@ export default function useAddImage() {
       canvasEditor.canvas.renderAll()
     })
     imgElement.remove()
+    hideFullScreenLoading()
   }
 
   function getWorkspaceWidth() {
