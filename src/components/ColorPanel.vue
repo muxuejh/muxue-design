@@ -603,6 +603,7 @@ function hex2rgba(s) {
   position: relative;
   user-select: none;
   width: 100%;
+  padding: 15px;
 }
 
 /* 饱和度和亮度 */

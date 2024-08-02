@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-popover placement="right" :width="320" trigger="click">
+    <el-popover placement="right" :width="320" :hide-after="0" trigger="click">
       <template #default>
         <ColorPanel
           v-model:color="colorVal"

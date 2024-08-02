@@ -4,7 +4,7 @@
     v-if="editorStore.selectMode === 'one' && !hideType.includes(editorStore.selectType)"
   >
     <h2 class="title">颜色</h2>
-    <el-popover placement="right" :width="320" trigger="click">
+    <el-popover placement="right" :width="320" :hide-after="0" trigger="click">
       <template #default>
         <ColorPanel
           v-model:color="color"
