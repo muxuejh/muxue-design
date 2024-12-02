@@ -46,6 +46,7 @@ declare module 'vue' {
     Material: typeof import('./src/components/sidebar/Material.vue')['default']
     MenuSwitch: typeof import('./src/components/MenuSwitch.vue')['default']
     PositionAndSize: typeof import('./src/components/configPanel/PositionAndSize.vue')['default']
+    Registration: typeof import('./src/components/Registration.vue')['default']
     ReplaceImg: typeof import('./src/components/configPanel/ReplaceImg.vue')['default']
     Save: typeof import('./src/components/header/Save.vue')['default']
     SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']

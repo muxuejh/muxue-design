@@ -1,5 +1,5 @@
 <template>
-  <div class="zoom">
+  <div class="absolute bottom-8 right-2">
     <el-button-group>
       <el-button :icon="ZoomOut" @click="small" />
       <el-button :icon="ZoomIn" @click="big" />
@@ -28,10 +28,4 @@ const auto = () => {
 }
 </script>
 
-<style scoped lang="scss">
-.zoom {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-}
-</style>
+<style scoped lang="scss"></style>

@@ -48,6 +48,9 @@
             <Zoom />
           </div>
         </div>
+        <div class="absolute bottom-0 left-0 right-0">
+          <Registration />
+        </div>
       </div>
 
       <!-- 属性区域 -->
@@ -89,6 +92,8 @@ import { fabric } from 'fabric'
 import useAppStore from '@/stores/modules/app'
 import useEditorStore from '@/stores/modules/editor'
 import CanvasEvent from '@/core/event'
+
+import Registration from '@/components/Registration.vue'
 
 import SvgIcon from '@/components/SvgIcon.vue'
 import MenuSwitch from '@/components/MenuSwitch.vue'
